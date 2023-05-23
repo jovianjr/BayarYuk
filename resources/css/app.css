@@ -1,3 +1,12 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+body {
+    @apply m-auto flex items-center justify-center bg-slate-200;
+}
+
+body .body-mobile {
+    @apply w-full bg-white;
+    max-width: calc(100% - (100% - 640px));
+}

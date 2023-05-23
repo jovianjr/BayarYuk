@@ -13,7 +13,9 @@
 </head>
 
 <body>
-    @yield('content')
+    <div class="body-mobile">
+        @yield('content')
+    </div>
 </body>
 
 </html>
