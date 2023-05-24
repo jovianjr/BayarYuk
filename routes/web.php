@@ -17,10 +17,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/login', function () {
-    return view('login');
-});
-
 Route::prefix('transfer')->group(function () {
     Route::get('/qr', function () {
         return view('transfer.qr');
@@ -38,3 +34,9 @@ Route::prefix('transfer')->group(function () {
         return view('transfer.berhasil');
     });
 });
+
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth'])->name('dashboard');
+
+require __DIR__ . '/auth.php';
