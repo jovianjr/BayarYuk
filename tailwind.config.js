@@ -17,6 +17,8 @@ module.exports = {
             backgroundImage: {
                 "grad-pink":
                     "linear-gradient(180deg, #FFFCFD 31.25%, #FFC8DD 100%)",
+                "grad-pink-2":
+                    "linear-gradient(55deg, #FFFCFD 10%, #FFC8DD 100%)",
             },
             boxShadow: {
                 "c-25": "0px 4px 4px rgba(0, 0, 0, 0.25)", // Replace with your desired shadow properties
