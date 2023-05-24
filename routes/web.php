@@ -30,6 +30,10 @@ Route::get('/homepage', function () {
     return view('homepage');
 });
 
+Route::get('/riwayat', function () {
+    return view('riwayat');
+});
+
 Route::prefix('transfer')->group(function () {
     Route::get('/qr', function () {
         return view('transfer.qr');
