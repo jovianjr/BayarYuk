@@ -13,30 +13,34 @@
         <form action="" class="flex flex-col w-72">
             <input type="text" id="inputNominal" placeholder="Masukkan Nominal" class="p-3 rounded-xl placeholder:text-gray-400 text-c-earlier-black border border-c-pink">
 
-            <div class="grid grid-cols-3 gap-10 my-12 text-lg">
-                <button onclick="appendToInput(event, '1')">1</button>
-                <button onclick="appendToInput(event, '2')">2</button>
-                <button onclick="appendToInput(event, '3')">3</button>
-                <button onclick="appendToInput(event, '4')">4</button>
-                <button onclick="appendToInput(event, '5')">5</button>
-                <button onclick="appendToInput(event, '6')">6</button>
-                <button onclick="appendToInput(event, '7')">7</button>
-                <button onclick="appendToInput(event, '8')">8</button>
-                <button onclick="appendToInput(event, '9')">9</button>
-                <button onclick="appendToInput(event, '0')">0</button>
-                <button onclick="appendToInput(event, '000')">000</button>
-                <button onclick="clearInput(event)">Clear</button>
+            <div class="flex gap-2">
+                <button class="bg-white w-1/2 font-semibold text-c-pink border border-c-pink px-6 py-2 rounded-xl mt-6">
+                    BATAL
+                </button>
+                <button class="bg-c-pink w-1/2 font-semibold text-white px-6 py-2 rounded-xl mt-6">
+                    LANJUTKAN
+                </button>
             </div>
-
-            <button class="bg-c-pink font-semibold text-white px-6 py-2 rounded-xl mt-6">
-                LANJUTKAN
-            </button>
         </form>
+
+        <div class="grid grid-cols-3 gap-10 mt-12 text-lg">
+            <button onclick="appendToInput('1')">1</button>
+            <button onclick="appendToInput('2')">2</button>
+            <button onclick="appendToInput('3')">3</button>
+            <button onclick="appendToInput('4')">4</button>
+            <button onclick="appendToInput('5')">5</button>
+            <button onclick="appendToInput('6')">6</button>
+            <button onclick="appendToInput('7')">7</button>
+            <button onclick="appendToInput('8')">8</button>
+            <button onclick="appendToInput('9')">9</button>
+            <button onclick="appendToInput('0')">0</button>
+            <button onclick="appendToInput('000')">000</button>
+            <button onclick="clearInput()">Clear</button>
+        </div>
     </div>
 </div>
 <script>
-    function appendToInput(event, value) {
-        event.preventDefault();
+    function appendToInput(value) {
         inputField = document.getElementById('inputNominal');
 
         const currentValue = inputField.value;
@@ -45,7 +49,6 @@
     }
 
     function clearInput() {
-        event.preventDefault();
         document.getElementById('inputNominal').value = '';
     }
 </script>

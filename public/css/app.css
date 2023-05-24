@@ -547,6 +547,9 @@ video {
 .w-full {
   width: 100%;
 }
+.w-1\/2 {
+  width: 50%;
+}
 .grid-cols-3 {
   grid-template-columns: repeat(3, minmax(0, 1fr));
 }
@@ -562,11 +565,17 @@ video {
 .justify-between {
   justify-content: space-between;
 }
+.justify-around {
+  justify-content: space-around;
+}
 .gap-2 {
   gap: 0.5rem;
 }
 .gap-10 {
   gap: 2.5rem;
+}
+.gap-8 {
+  gap: 2rem;
 }
 .rounded-full {
   border-radius: 9999px;
@@ -676,6 +685,10 @@ video {
 .text-green-800 {
   --tw-text-opacity: 1;
   color: rgb(22 101 52 / var(--tw-text-opacity));
+}
+.text-c-pink {
+  --tw-text-opacity: 1;
+  color: rgb(255 112 165 / var(--tw-text-opacity));
 }
 .underline {
   text-decoration-line: underline;
