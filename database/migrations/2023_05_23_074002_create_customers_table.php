@@ -14,16 +14,17 @@ class CreateCustomersTable extends Migration
     public function up()
     {
         Schema::create('customers', function (Blueprint $table) {
-            $table->string('id', 36)->primary();
+            $table->uuid('id')->primary();
+            $table->uuid('user_id');
             $table->string('phone_number', 15);
             $table->string('email', 255);
             $table->string('name', 255);
-            $table->string('photo', 255);
-            $table->string('address', 255);
-            $table->date('birth_date');
-            $table->string('birth_place', 255);
-            $table->datetime('created_at');
-            $table->datetime('deleted_at')->nullable();
+            $table->string('photo', 255)->nullable();
+            $table->string('address', 255)->nullable();
+            $table->date('birth_date')->nullable();
+            $table->string('birth_place', 255)->nullable();
+            $table->timestamps();
+            $table->softDeletes();
         });
 
         $this->seedCustomers();

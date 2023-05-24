@@ -3,11 +3,13 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\Customer;
 use App\Models\User;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
 
@@ -34,16 +36,38 @@ class RegisteredUserController extends Controller
     public function store(Request $request)
     {
         $request->validate([
+            'password' => ['required', 'numeric', 'confirmed', Rules\Password::defaults()],
+            'account_type' => ['required', 'string'],
+            'phone_number' => ['required', 'numeric'],
+            'email' => ['required', 'string', 'email', 'max:255'],
             'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'confirmed', Rules\Password::defaults()],
+            'address' => ['required', 'string', 'max:255'],
+            'birth_date' => ['required', 'date'],
+            'birth_place' => ['required', 'string', 'max:30']
         ]);
 
-        $user = User::create([
-            'name' => $request->name,
-            'email' => $request->email,
-            'password' => Hash::make($request->password),
-        ]);
+        try {
+            DB::beginTransaction();
+
+            $user = User::create([
+                'password' => Hash::make($request->password),
+                'account_type' => $request->account_type,
+                'balance' => 0,
+            ]);
+
+            $user->customer()->create([
+                'phone_number' => $request->phone_number,
+                'email' => $request->email,
+                'name' => $request->name,
+                'address' => $request->address,
+                'birth_date' => $request->birth_date,
+                'birth_place' => $request->birth_place,
+            ]);
+
+            DB::commit();
+        } catch (Exception $e) {
+            DB::rollback();
+        };
 
         event(new Registered($user));
 

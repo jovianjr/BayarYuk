@@ -2,11 +2,15 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Concerns\HasUuids;
+use App\Traits\Uuids;
 use Illuminate\Database\Eloquent\Model;
 
 class Transaction extends Model
 {
-    use HasUuids;
+    use Uuids;
     const CREATED_AT = 'created_at';
+
+    public $incrementing = false;
+
+    protected $keyType = 'uuid';
 }
