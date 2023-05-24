@@ -17,6 +17,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/coba', function () {
+    return view('inputpin');
+});
+
 Route::prefix('profile')->group(function () {
     Route::get('/profil', function () {
         return view('profile.profil');
