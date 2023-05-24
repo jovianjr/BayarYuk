@@ -17,8 +17,13 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/login', function () {
-    return view('login');
+Route::prefix('profile')->group(function () {
+    Route::get('/profil', function () {
+        return view('profile.profil');
+    });
+    Route::get('/help', function () {
+        return view('login.help');
+    });
 });
 
 Route::get('/homepage', function () {
@@ -38,7 +43,33 @@ Route::prefix('transfer')->group(function () {
     Route::get('/konfirmasi', function () {
         return view('transfer.konfirmasi');
     });
+    Route::get('/pin', function () {
+        return view('transfer.inputpin');
+    });
     Route::get('/berhasil', function () {
         return view('transfer.berhasil');
+    });
+});
+
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth'])->name('dashboard');
+
+require __DIR__ . '/auth.php';
+Route::prefix('bayar')->group(function () {
+    Route::get('/qr', function () {
+        return view('bayar.qr');
+    });
+    Route::get('/manual', function () {
+        return view('bayar.manual');
+    });
+    Route::get('/konfirmasi', function () {
+        return view('bayar.konfirmasi');
+    });
+    Route::get('/pin', function () {
+        return view('bayar.inputpin');
+    });
+    Route::get('/berhasil', function () {
+        return view('bayar.berhasil');
     });
 });
