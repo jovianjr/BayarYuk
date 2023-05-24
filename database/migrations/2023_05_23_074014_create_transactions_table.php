@@ -14,13 +14,13 @@ class CreateTransactionsTable extends Migration
     public function up()
     {
         Schema::create('transactions', function (Blueprint $table) {
-            $table->string('id', 36)->primary();
+            $table->uuid('id')->primary();
             $table->string('from_account_id', 36);
             $table->string('to_account_id', 36);
             $table->decimal('amount', 20, 2);
-            $table->string('description', 255);
-            $table->datetime('created_at');
-            $table->datetime('deleted_at')->nullable();
+            $table->string('description', 255)->nullable();
+            $table->timestamps();
+            $table->softDeletes();
         });
 
         $this->seedTransactions();
