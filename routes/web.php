@@ -17,6 +17,15 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::prefix('profile')->group(function () {
+    Route:: get('/profil', function () {
+        return view('profile.profil');
+    });
+    Route:: get('/help', function () {
+        return view('login.help');
+    });
+});
+
 Route::prefix('transfer')->group(function () {
     Route::get('/qr', function () {
         return view('transfer.qr');
@@ -40,3 +49,6 @@ Route::get('/dashboard', function () {
 })->middleware(['auth'])->name('dashboard');
 
 require __DIR__ . '/auth.php';
+
+
+
