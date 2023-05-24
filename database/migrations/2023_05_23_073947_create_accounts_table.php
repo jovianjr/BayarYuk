@@ -14,7 +14,7 @@ class CreateAccountsTable extends Migration
     public function up()
     {
         Schema::create('accounts', function (Blueprint $table) {
-            $table->string('account_id', 36)->primary();
+            $table->string('id', 36)->primary();
             $table->string('customer_id', 36);
             $table->string('password', 255);
             $table->string('account_type', 255);
@@ -45,7 +45,7 @@ class CreateAccountsTable extends Migration
     {
         DB::table('accounts')->insert([
             [
-                'account_id' => '4a7b0190-220d-42b3-8e21-9e4305d4b0d1',
+                'id' => '4a7b0190-220d-42b3-8e21-9e4305d4b0d1',
                 'customer_id' => '849d37f1-9e6b-4fb7-93d6-384e780a0650',
                 'password' => 'password123',
                 'account_type' => 'normal',
@@ -53,7 +53,7 @@ class CreateAccountsTable extends Migration
                 'created_at' => '2023-05-22 10:00:00',
             ],
             [
-                'account_id' => '874cff94-847e-429e-bd7b-04834f7dd671',
+                'id' => '874cff94-847e-429e-bd7b-04834f7dd671',
                 'customer_id' => '7b52cb18-7462-4e2c-8d4c-c3d6636f8e85',
                 'password' => 'abc123',
                 'account_type' => 'normal',

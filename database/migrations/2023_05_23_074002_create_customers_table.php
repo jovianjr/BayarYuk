@@ -14,7 +14,7 @@ class CreateCustomersTable extends Migration
     public function up()
     {
         Schema::create('customers', function (Blueprint $table) {
-            $table->string('customer_id', 36)->primary();
+            $table->string('id', 36)->primary();
             $table->string('phone_number', 15);
             $table->string('email', 255);
             $table->string('name', 255);
@@ -48,7 +48,7 @@ class CreateCustomersTable extends Migration
     {
         DB::table('customers')->insert([
             [
-                'customer_id' => '849d37f1-9e6b-4fb7-93d6-384e780a0650',
+                'id' => '849d37f1-9e6b-4fb7-93d6-384e780a0650',
                 'phone_number' => '1234567890',
                 'email' => 'customer1@example.com',
                 'name' => 'John Doe',
@@ -59,7 +59,7 @@ class CreateCustomersTable extends Migration
                 'created_at' => '2023-05-22 10:00:00',
             ],
             [
-                'customer_id' => '7b52cb18-7462-4e2c-8d4c-c3d6636f8e85',
+                'id' => '7b52cb18-7462-4e2c-8d4c-c3d6636f8e85',
                 'phone_number' => '9876543210',
                 'email' => 'customer2@example.com',
                 'name' => 'Jane Smith',
