@@ -20,3 +20,21 @@ Route::get('/', function () {
 Route::get('/login', function () {
     return view('login');
 });
+
+Route::prefix('transfer')->group(function () {
+    Route::get('/qr', function () {
+        return view('transfer.qr');
+    });
+    Route::get('/manual', function () {
+        return view('transfer.manual');
+    });
+    Route::get('/nominal', function () {
+        return view('transfer.nominal');
+    });
+    Route::get('/konfirmasi', function () {
+        return view('transfer.konfirmasi');
+    });
+    Route::get('/berhasil', function () {
+        return view('transfer.berhasil');
+    });
+});
