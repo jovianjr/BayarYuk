@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Auth\LoginRequest;
+use App\Models\Customer;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -15,9 +16,9 @@ class AuthenticatedSessionController extends Controller
      *
      * @return \Illuminate\View\View
      */
-    public function create()
+    public function create(Request $request)
     {
-        return view('auth.login');
+        return view('auth.login', ["user_id" => null]);
     }
 
     /**
@@ -28,11 +29,18 @@ class AuthenticatedSessionController extends Controller
      */
     public function store(LoginRequest $request)
     {
-        $request->authenticate();
+        $customer = Customer::select('user_id')->where('phone_number', $request->phone_number)->orderBy('created_at', 'DESC')->first();
 
-        $request->session()->regenerate();
+        if ($customer && $customer->user_id) {
+            return view('auth.login', ["user_id" => $customer->user_id]);
+        } else {
 
-        return redirect()->intended(RouteServiceProvider::HOME);
+            $request->authenticate();
+
+            $request->session()->regenerate();
+
+            return redirect()->intended(RouteServiceProvider::HOME);
+        }
     }
 
     /**
