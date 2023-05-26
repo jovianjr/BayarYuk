@@ -59,7 +59,7 @@
         @else
         <div class="flex flex-col items-center justify-between h-full">
             <img src="/images/welcome/saving.png" alt="Login Illustration" class="w-10 aspect-square" />
-            <img src="/images/welcome/saving.png" alt="Login Illustration" class="w-1/2 aspect-square" />
+            <img src="/images/welcome/saving.png" alt="Login Illustration" class="w-3/4 aspect-square" />
 
             <div class="flex flex-col items-center justify-center gap-6">
                 <!-- Validation Errors -->
