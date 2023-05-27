@@ -25,13 +25,14 @@ Route::prefix('profile')->group(function () {
     Route::get('/profil', function () {
         return view('profile.profil');
     });
-    Route::get('/help', function () {
-        return view('login.help');
-    });
 });
 
 Route::get('/homepage', function () {
     return view('homepage');
+});
+
+Route::get('/help', function () {
+    return view('help');
 });
 
 Route::get('/riwayat', function () {
