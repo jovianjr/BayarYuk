@@ -17,6 +17,7 @@
     <div class="body-mobile">
         @yield('content')
     </div>
+    <script src="https://code.iconify.design/3/3.1.0/iconify.min.js"></script>
 </body>
 
 </html>

@@ -1,104 +1,92 @@
 @extends('layouts.master')
 
 @section('content')
-<div>
-    <div class='bg-grad-pink-2 h-screen font-bolxtd w-full te-3xl flex flex-col items-center justify-center text-sm'>
-        <div class='w-full p-6'>
-            <div class="bg-[url('/images/bg.png')] w-full h-[150px] rounded-xl p-5">
-                <p class='text-2xl text-white font-semibold'>Halo Fiorenza</p>
-                <div class='text-right my-3'>
-                    <p class='text-lg text-white'>Saldo Anda</p>
-                    <p class='text-2xl text-white font-semibold'>Rp 100.000.000</p>
-                </div>
-            </div>
-        </div>
-        <div class='w-full min-h-[387px] bg-white rounded-t-xl p-7'>
-            <div class='flex flex-row items-center justify-start py-5'>
-                <button type="button" class="inline-flex flex-row items-center justify-center pr-10 gap-3">
-                    <div class='bg-blue-300 rounded-full p-2'>
-                        <span class="iconify" data-icon="fluent:money-hand-24-regular" data-width="28" data-height="28"></span>
-                    </div>
-                    <p class='text-md font-semibold'>Transfer</p>
-                </button>
-                <button type="button" class="inline-flex flex-row items-center justify-center pr-10 gap-3">
-                    <div class='bg-blue-300 rounded-full p-2'>
-                        <span class="iconify" data-icon="fluent:money-hand-24-regular" data-width="28" data-height="28"></span>
-                    </div>
-                    <p class='text-md font-semibold'>Bayar</p>
-                </button>
-            </div>
-            <div class='grid grid-col gap-3'>
-                <p>Transaksi terakhir</p>
-                <div class='border-2 border-blue-white w-full h-auto rounded-xl py-2'>
-                    <div class='grid grid-cols-[55px_155px_105px] flex items-center justify-center'>
-                        <div class='bg-blue-300 rounded-full p-4 w-4 mx-auto'></div>
-                        <div>
-                            <p class='text-md font-semibold'>Transfer</p>
-                            <p class='text-sm text-gray-400'>09 Agustus 2023</p>
-                        </div>
-                        <div class='text-md font-semibold'>Rp 100.000</div>
-                    </div>
-                </div>
-                <div class='border-2 border-blue-white w-full h-auto rounded-xl py-2'>
-                    <div class='grid grid-cols-[55px_155px_105px] flex items-center justify-center'>
-                        <div class='bg-blue-300 rounded-full p-4 w-4 mx-auto'></div>
-                        <div>
-                            <p class='text-md font-semibold'>Transfer</p>
-                            <p class='text-sm text-gray-400'>09 Agustus 2023</p>
-                        </div>
-                        <div class='text-md font-semibold'>Rp 100.000</div>
-                    </div>
-                </div>
-                <div class='border-2 border-blue-white w-full h-auto rounded-xl py-2'>
-                    <div class='grid grid-cols-[55px_155px_105px] flex items-center justify-center'>
-                        <div class='bg-blue-300 rounded-full p-4 w-4 mx-auto'></div>
-                        <div>
-                            <p class='text-md font-semibold'>Transfer</p>
-                            <p class='text-sm text-gray-400'>09 Agustus 2023</p>
-                        </div>
-                        <div class='text-md font-semibold'>Rp 100.000</div>
-                    </div>
-                </div>
-                <div class='border-2 border-blue-white w-full h-auto rounded-xl py-2'>
-                    <div class='grid grid-cols-[55px_155px_105px] flex items-center justify-center'>
-                        <div class='bg-blue-300 rounded-full p-4 w-4 mx-auto'></div>
-                        <div>
-                            <p class='text-md font-semibold'>Transfer</p>
-                            <p class='text-sm text-gray-400'>09 Agustus 2023</p>
-                        </div>
-                        <div class='text-md font-semibold'>Rp 100.000</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="fixed z-10 w-full h-16 max-w-lg -translate-x-1/2 bg-white bottom-0 left-1/2 rounded-t-3xl drop-shadow-xl border border-gray-300">
-            <div class="grid h-full max-w-lg grid-cols-5 mx-auto text-c-earlier-black">
-                <button type="button" class="inline-flex flex-col items-center justify-center px-5 hover:bg-yellow-400 rounded-tl-3xl">
-                    <span class="iconify" data-icon="material-symbols:home-outline" data-width="24" data-height="24"></span>
-                    <p class="font-medium text-xs">Home</p>
-                </button>
-                <button type="button" class="inline-flex flex-col items-center justify-center px-5 hover:bg-yellow-400">
-                    <span class="iconify" data-icon="gg:list" data-width="24" data-height="24"></span>
-                    <p class="font-medium text-xs">Riwayat</p>
-                </button>
-                <button type="button" class="inline-flex flex-col items-center justify-center px-5 hover:bg-yellow-400">
-                    <div class="absolute -top-[35%] rounded-full bg-c-pink p-1">
-                        <img src="/images/icon/bayar-pesawat.svg" alt="bayar" class="translate-x-0.5">
-                    </div>
-                    <p class="font-medium text-xs text-c-pink mt-6">Bayar</p>
-                </button>
-                <button type="button" class="inline-flex flex-col items-center justify-center px-5 hover:bg-yellow-400">
-                    <span class="iconify" data-icon="material-symbols:help-outline" data-width="24" data-height="24"></span>
-                    <p class="font-medium text-xs">Bantuan</p>
-                </button>
-                <button type="button" class="inline-flex flex-col items-center justify-center px-5 hover:bg-yellow-400 rounded-tr-3xl">
-                    <span class="iconify" data-icon="gg:profile" data-width="24" data-height="24"></span>
-                    <p class="font-medium text-xs">Profile</p>
-                </button>
+<div class='bg-grad-pink-2 h-screen w-full flex flex-col items-center text-sm max-h-screen overflow-scroll'>
+    <div class='flex-1 flex w-full py-6 px-6 items-center justify-center'>
+        <div class="bg-[url('/images/bg.png')] w-full h-[150px] rounded-xl p-5">
+            <p class='text-2xl text-white font-semibold'>Halo {{ $customer->name }}</p>
+            <div class='text-right my-3'>
+                <p class='text-md text-white'>Saldo Anda</p>
+                <p class='text-2xl text-white font-semibold'>Rp {{ $customer->balance }}</p>
             </div>
         </div>
     </div>
+    <div class=' w-full bg-white rounded-t-xl pt-6 px-6 pb-28'>
+        <div class='flex flex-row items-center justify-start py-5'>
+            <button type="button" class="flex-1 inline-flex flex-row items-center justify-center pr-10 gap-3">
+                <div class='bg-blue-300 rounded-full p-2'>
+                    <span class="iconify" data-icon="fluent:money-hand-24-regular" data-width="28" data-height="28"></span>
+                </div>
+                <p class='text-sm font-semibold'>Transfer</p>
+            </button>
+            <button type="button" class="flex-1 inline-flex flex-row items-center justify-center pr-10 gap-3">
+                <div class='bg-blue-300 rounded-full p-2'>
+                    <span class="iconify" data-icon="fluent:money-hand-24-regular" data-width="28" data-height="28"></span>
+                </div>
+                <p class='text-sm font-semibold'>Bayar</p>
+            </button>
+        </div>
+        <div class='flex flex-col gap-4'>
+            <p class="text-xs">Transaksi terakhir</p>
+            @if (count($transactions) == 0)
+            <p class='text-center text-gray-400 py-4'>Belum ada transaksi</p>
+            @else
+            @foreach($transactions as $transaction)
+            <div class='border-2 border-blue-white w-full h-auto rounded-xl py-2 px-4 flex items-center'>
+                <div class='flex-1 flex items-center gap-2'>
+                    @if ($transaction->status === 'IN')
+                    <div class='text-green-500 rounded-full aspect-square h-12 pt-2.5'><span class="iconify mx-auto" data-icon="streamline:money-cash-bag-dollar-bag-payment-cash-money-finance" data-width="24" data-height="24"></span></div>
+                    @else
+                    <div class='text-red-500 rounded-full aspect-square h-12 pt-2.5'><span class="iconify mx-auto" data-icon="solar:hand-money-outline" data-width="24" data-height="24"></div>
+                    @endif
+                    <div>
+                        <div class="flex items-center">
+                            <p class='text-md font-semibold'>{{ ucfirst($transaction->type) }}</p>
+                            @if ($transaction->status === 'IN')
+                            <div class='text-white text-[10px] bg-green-500 rounded-lg flex items-center justify-center px-2 font-semibold ml-2 h-fit leading-none py-0.5'>IN</div>
+                            @else
+                            <div class='text-white text-[10px] bg-red-500 rounded-lg flex items-center justify-center px-2 font-semibold ml-2 h-fit leading-none py-0.5'>OUT</div>
+                            @endif
+                        </div>
+                        <p class='text-sm text-gray-400'>{{ $transaction->date }}</p>
+                        <p class='text-sm text-gray-400'>{{ $transaction->time }}</p>
+                    </div>
+                </div>
+                <div class='flex-1 flex justify-end text-md font-semibold'>Rp {{$transaction->amount}}</div>
+            </div>
+            @endforeach
+            <div class='w-full flex items-center justify-center '>
+                <a href="{{ url('/riwayat') }}" class='text-center text-gray-400 py-2 px-3'>Lihat Semua</a>
+            </div>
+            @endif
+        </div>
+    </div>
+
+    <div class="fixed z-10 w-full h-16 max-w-lg -translate-x-1/2 bg-white bottom-0 left-1/2 rounded-t-3xl drop-shadow-xl border border-gray-300">
+        <div class="grid h-full max-w-lg grid-cols-5 mx-auto text-c-earlier-black">
+            <button type="button" class="inline-flex flex-col items-center justify-center px-5 hover:bg-yellow-400 rounded-tl-3xl">
+                <span class="iconify" data-icon="material-symbols:home-outline" data-width="24" data-height="24"></span>
+                <p class="font-medium text-xs">Home</p>
+            </button>
+            <button type="button" class="inline-flex flex-col items-center justify-center px-5 hover:bg-yellow-400">
+                <span class="iconify" data-icon="gg:list" data-width="24" data-height="24"></span>
+                <p class="font-medium text-xs">Riwayat</p>
+            </button>
+            <button type="button" class="inline-flex flex-col items-center justify-center px-5 hover:bg-yellow-400">
+                <div class="absolute -top-[35%] rounded-full bg-c-pink p-1">
+                    <img src="/images/icon/bayar-pesawat.svg" alt="bayar" class="translate-x-0.5">
+                </div>
+                <p class="font-medium text-xs text-c-pink mt-6">Bayar</p>
+            </button>
+            <button type="button" class="inline-flex flex-col items-center justify-center px-5 hover:bg-yellow-400">
+                <span class="iconify" data-icon="material-symbols:help-outline" data-width="24" data-height="24"></span>
+                <p class="font-medium text-xs">Bantuan</p>
+            </button>
+            <button type="button" class="inline-flex flex-col items-center justify-center px-5 hover:bg-yellow-400 rounded-tr-3xl">
+                <span class="iconify" data-icon="gg:profile" data-width="24" data-height="24"></span>
+                <p class="font-medium text-xs">Profile</p>
+            </button>
+        </div>
+    </div>
 </div>
-<script src="https://code.iconify.design/3/3.1.0/iconify.min.js"></script>
 @endsection
