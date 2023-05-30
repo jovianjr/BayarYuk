@@ -2,7 +2,7 @@
 
 @section('content')
 <div>
-    <div class='bg-white h-screen p-6 font-bolxtd w-full te-3xl flex flex-col items-center text-sm gap-3'>
+    <div class='bg-white h-screen p-6 w-full te-3xl flex flex-col items-center text-sm gap-3'>
         <p class='text-2xl font-bold text-left w-full p-2'>Riwayat Transaksi</p>
 
         <form class='flex flex-row gap-3 items-center justify-center w-full p-2'>
@@ -13,57 +13,31 @@
             </button>
         </form>
 
-        <div class='grid grid-col gap-3'>
-            <div class='border-2 border-blue-white w-full h-auto rounded-xl py-2'>
-                <div class='grid grid-cols-[55px_155px_105px] flex items-center justify-center'>
-                    <div class='bg-blue-300 rounded-full p-4 w-4 mx-auto'></div>
+        <div class='grid grid-col gap-3 w-full'>
+            @foreach($transactions as $transaction)
+            <div class='border-2 border-blue-white w-full h-auto rounded-xl py-2 px-4 flex items-center'>
+                <div class='flex-1 flex items-center gap-2'>
+                    @if ($transaction->status === 'IN')
+                    <div class='text-green-500 rounded-full aspect-square h-12 pt-2.5'><span class="iconify mx-auto" data-icon="streamline:money-cash-bag-dollar-bag-payment-cash-money-finance" data-width="24" data-height="24"></span></div>
+                    @else
+                    <div class='text-red-500 rounded-full aspect-square h-12 pt-2.5'><span class="iconify mx-auto" data-icon="solar:hand-money-outline" data-width="24" data-height="24"></div>
+                    @endif
                     <div>
-                        <p class='text-md font-semibold'>Transfer</p>
-                        <p class='text-sm text-gray-400'>09 Agustus 2023</p>
+                        <div class="flex">
+                            <p class='text-md font-semibold'>{{ ucfirst($transaction->type) }}</p>
+                            @if ($transaction->status === 'IN')
+                            <div class='text-white text-[10px] bg-green-500 rounded-lg flex items-center justify-center px-2 font-semibold ml-2'>IN</div>
+                            @else
+                            <div class='text-white text-[10px] bg-red-500 rounded-lg flex items-center justify-center px-2 font-semibold ml-2'>OUT</div>
+                            @endif
+                        </div>
+                        <p class='text-sm text-gray-400'>{{ $transaction->date }}</p>
+                        <p class='text-sm text-gray-400'>{{ $transaction->time }}</p>
                     </div>
-                    <div class='text-md font-semibold'>Rp 100.000</div>
                 </div>
+                <div class='flex-1 flex justify-end text-md font-semibold'>Rp {{$transaction->amount}}</div>
             </div>
-            <div class='border-2 border-blue-white w-full h-auto rounded-xl py-2'>
-                <div class='grid grid-cols-[55px_155px_105px] flex items-center justify-center'>
-                    <div class='bg-blue-300 rounded-full p-4 w-4 mx-auto'></div>
-                    <div>
-                        <p class='text-md font-semibold'>Transfer</p>
-                        <p class='text-sm text-gray-400'>09 Agustus 2023</p>
-                    </div>
-                    <div class='text-md font-semibold'>Rp 100.000</div>
-                </div>
-            </div>
-            <div class='border-2 border-blue-white w-full h-auto rounded-xl py-2'>
-                <div class='grid grid-cols-[55px_155px_105px] flex items-center justify-center'>
-                    <div class='bg-blue-300 rounded-full p-4 w-4 mx-auto'></div>
-                    <div>
-                        <p class='text-md font-semibold'>Transfer</p>
-                        <p class='text-sm text-gray-400'>09 Agustus 2023</p>
-                    </div>
-                    <div class='text-md font-semibold'>Rp 100.000</div>
-                </div>
-            </div>
-            <div class='border-2 border-blue-white w-full h-auto rounded-xl py-2'>
-                <div class='grid grid-cols-[55px_155px_105px] flex items-center justify-center'>
-                    <div class='bg-blue-300 rounded-full p-4 w-4 mx-auto'></div>
-                    <div>
-                        <p class='text-md font-semibold'>Transfer</p>
-                        <p class='text-sm text-gray-400'>09 Agustus 2023</p>
-                    </div>
-                    <div class='text-md font-semibold'>Rp 100.000</div>
-                </div>
-            </div>
-            <div class='border-2 border-blue-white w-full h-auto rounded-xl py-2'>
-                <div class='grid grid-cols-[55px_155px_105px] flex items-center justify-center'>
-                    <div class='bg-blue-300 rounded-full p-4 w-4 mx-auto'></div>
-                    <div>
-                        <p class='text-md font-semibold'>Transfer</p>
-                        <p class='text-sm text-gray-400'>09 Agustus 2023</p>
-                    </div>
-                    <div class='text-md font-semibold'>Rp 100.000</div>
-                </div>
-            </div>
+            @endforeach
         </div>
         <div class="fixed z-10 w-full h-16 max-w-lg -translate-x-1/2 bg-white bottom-0 left-1/2 rounded-t-3xl drop-shadow-xl border border-gray-300">
             <div class="grid h-full max-w-lg grid-cols-5 mx-auto text-c-earlier-black">

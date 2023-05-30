@@ -11,7 +11,7 @@
                     <img src="/images/icon/edit.svg" alt="edit icon" class="h-3 w-3">
                 </a>
             </div>
-            <h2 class="text-3xl text-white font-semibold text-center mt-4">Fiorenza Celestyn</h2>
+            <h2 class="text-3xl text-white font-semibold text-center mt-4">{{ $customer->name }}</h2>
         </div>
 
         <div class="bg-white px-6 py-4 rounded-xl flex items-center justify-between border border-c-pink-white shadow-c-25 mt-6 w-full z-10">
@@ -21,7 +21,7 @@
                         <p class="text-xs font-semibold">Nomor Telepon</p>
                         <div class="flex items-center mt-2">
                             <img src="/images/icon/phone.png" alt="phone icon" class="h-4 w-4 text-pink">
-                            <p class="text-sm font-normal ml-2">0842321939</p>
+                            <p class="text-sm font-normal ml-2">{{ $customer->phone_number }}</p>
                         </div>
                     </div>
                 </div>
@@ -31,7 +31,7 @@
                         <p class="text-xs font-semibold">Nama Lengkap</p>
                         <div class="flex items-center mt-2">
                             <img src="/images/icon/name.png" alt="name icon" class="h-4 w-4 text-pink">
-                            <p class="text-sm font-normal ml-2">Fiorenza Celestyn</p>
+                            <p class="text-sm font-normal ml-2">{{ $customer->name }}</p>
                         </div>
                     </div>
                 </div>
@@ -41,14 +41,14 @@
                         <p class="text-xs font-semibold">Email</p>
                         <div class="flex items-center mt-2">
                             <img src="/images/icon/email.png" alt="email icon" class="h-4 w-4 text-pink">
-                            <p class="text-sm font-normal ml-2">picchan@gmail.com</p>
+                            <p class="text-sm font-normal ml-2">{{ $customer->email }}</p>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
 
-        <button class="bg-c-pink w-1/2 font-semibold text-white px-6 py-2 rounded-xl mt-12"> <a href="" class="text-lg"> LOG OUT </a> </button>
+        <button class="bg-c-pink w-1/2 font-semibold text-white px-6 py-2 rounded-xl mt-12"> <a href="/logout" class="text-lg"> LOG OUT </a> </button>
 
         <div class="flex flex-col items-center">
             <p class="text-sm mt-4">Temukan kami di</p>
