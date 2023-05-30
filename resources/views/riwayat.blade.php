@@ -23,12 +23,12 @@
                     <div class='text-red-500 rounded-full aspect-square h-12 pt-2.5'><span class="iconify mx-auto" data-icon="solar:hand-money-outline" data-width="24" data-height="24"></div>
                     @endif
                     <div>
-                        <div class="flex">
+                        <div class="flex items-center">
                             <p class='text-md font-semibold'>{{ ucfirst($transaction->type) }}</p>
                             @if ($transaction->status === 'IN')
-                            <div class='text-white text-[10px] bg-green-500 rounded-lg flex items-center justify-center px-2 font-semibold ml-2'>IN</div>
+                            <div class='text-white text-[10px] bg-green-500 rounded-lg flex items-center justify-center px-2 font-semibold ml-2 h-fit leading-none py-0.5'>IN</div>
                             @else
-                            <div class='text-white text-[10px] bg-red-500 rounded-lg flex items-center justify-center px-2 font-semibold ml-2'>OUT</div>
+                            <div class='text-white text-[10px] bg-red-500 rounded-lg flex items-center justify-center px-2 font-semibold ml-2 h-fit leading-none py-0.5'>OUT</div>
                             @endif
                         </div>
                         <p class='text-sm text-gray-400'>{{ $transaction->date }}</p>
