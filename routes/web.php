@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\HistoryController;
+use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -22,10 +24,9 @@ Route::get('/coba', function () {
 });
 
 Route::prefix('profile')->group(function () {
-    Route::get('/profil', function () {
-        return view('profile.profil');
-    });
+    Route::get('/', [ProfileController::class, 'index'])->middleware(['auth']);
 });
+
 
 Route::get('/homepage', function () {
     return view('homepage');
@@ -35,9 +36,7 @@ Route::get('/help', function () {
     return view('help');
 });
 
-Route::get('/riwayat', function () {
-    return view('riwayat');
-});
+Route::get('/riwayat', [HistoryController::class, 'index'])->middleware(['auth']);
 
 Route::prefix('transfer')->group(function () {
     Route::get('/qr', function () {
