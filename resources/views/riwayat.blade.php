@@ -14,6 +14,9 @@
         </form>
 
         <div class='grid grid-col gap-3 w-full'>
+            @if (count($transactions) == 0)
+            <p class='text-center text-gray-400 py-4'>Tidak ada transaksi</p>
+            @else
             @foreach($transactions as $transaction)
             <div class='border-2 border-blue-white w-full h-auto rounded-xl py-2 px-4 flex items-center'>
                 <div class='flex-1 flex items-center gap-2'>
@@ -38,6 +41,7 @@
                 <div class='flex-1 flex justify-end text-md font-semibold'>Rp {{$transaction->amount}}</div>
             </div>
             @endforeach
+            @endif
         </div>
         <div class="fixed z-10 w-full h-16 max-w-lg -translate-x-1/2 bg-white bottom-0 left-1/2 rounded-t-3xl drop-shadow-xl border border-gray-300">
             <div class="grid h-full max-w-lg grid-cols-5 mx-auto text-c-earlier-black">
@@ -68,20 +72,21 @@
 
         <!-- Modal -->
         <div id="filterModal" class="absolute z-50 top-0 left-0 bg-black/[0.8] h-screen w-screen  text-c-earlier-black flex items-center justify-center hidden">
-            <form class="mx-auto py-4 px-6 flex flex-col bg-white rounded-xl border-2 border-c-blue-white w-3/4">
+            <form method="POST" action="{{ route('riwayat.filter') }}" class="mx-auto py-4 px-6 flex flex-col bg-white rounded-xl border-2 border-c-blue-white w-3/4">
+                @csrf
                 <h1 class="text-2xl font-semibold">Filter berdasarkan</h1>
                 <p class="font-semibold text-lg mt-6">Kategori</p>
                 <label class="text-lg py-1">
-                    <input type="radio" name="kategori" value="transfer">
-                    Transfer
+                    <input type="radio" name="kategori" value="Semua">
+                    Semua
                 </label>
                 <label class="text-lg py-1">
-                    <input type="radio" name="kategori" value="bayar">
-                    Bayar
-                </label>
-                <label class="text-lg py-1">
-                    <input type="radio" name="kategori" value="uangmasuk">
+                    <input type="radio" name="kategori" value="IN">
                     Uang Masuk
+                </label>
+                <label class="text-lg py-1">
+                    <input type="radio" name="kategori" value="OUT">
+                    Uang Keluar
                 </label>
 
                 <p class="font-semibold text-lg mt-6">Waktu</p>
@@ -97,8 +102,7 @@
                     <input type="radio" name="waktu" value="twoweek">
                     2 Minggu Lalu
                 </label>
-
-                <button class="rounded-xl text-white bg-c-pink w-1/4 text-xl font-bold text-center px-3 py-2 mx-auto mt-6">OK</button>
+                <button type="submit" class="rounded-xl text-white bg-c-pink w-1/4 text-xl font-bold text-center px-3 py-2 mx-auto mt-6">OK</button>
             </form>
         </div>
     </div>
@@ -106,7 +110,6 @@
     <script>
         $(document).ready(function() {
             var modal = $("#filterModal");
-            var closeButton = $(".close");
 
             function openModal() {
                 modal.removeClass("hidden");
@@ -119,10 +122,6 @@
             $(".open-modal").click(function(event) {
                 event.preventDefault();
                 openModal();
-            });
-
-            closeButton.click(function() {
-                closeModal();
             });
 
             $(window).click(function(event) {
