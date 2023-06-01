@@ -13,18 +13,18 @@
     </div>
     <div class=' w-full bg-white rounded-t-xl pt-6 px-6 pb-28'>
         <div class='flex flex-row items-center justify-start py-5'>
-            <button type="button" class="flex-1 inline-flex flex-row items-center justify-center pr-10 gap-3">
+            <a href="transfer/qr" type="button" class="flex-1 inline-flex flex-row items-center justify-center pr-10 gap-3">
                 <div class='bg-blue-300 rounded-full p-2'>
                     <span class="iconify" data-icon="fluent:money-hand-24-regular" data-width="28" data-height="28"></span>
                 </div>
                 <p class='text-sm font-semibold'>Transfer</p>
-            </button>
-            <button type="button" class="flex-1 inline-flex flex-row items-center justify-center pr-10 gap-3">
+            </a>
+            <a href="bayar/qr" type="button" class="flex-1 inline-flex flex-row items-center justify-center pr-10 gap-3">
                 <div class='bg-blue-300 rounded-full p-2'>
                     <span class="iconify" data-icon="fluent:money-hand-24-regular" data-width="28" data-height="28"></span>
                 </div>
                 <p class='text-sm font-semibold'>Bayar</p>
-            </button>
+            </a>
         </div>
         <div class='flex flex-col gap-4'>
             <p class="text-xs">Transaksi terakhir</p>
@@ -72,7 +72,7 @@
                 <span class="iconify" data-icon="gg:list" data-width="24" data-height="24"></span>
                 <p class="font-medium text-xs">Riwayat</p>
             </a>
-            <a href="bayar/qr" type="button" class="inline-flex flex-col items-center justify-center px-5 hover:bg-yellow-400">
+            <a href="bayar/qr" type="button" class="inline-flex flex-col items-center justify-center px-5">
                 <div class="absolute -top-[35%] rounded-full bg-c-pink p-1">
                     <img src="/images/icon/bayar-pesawat.svg" alt="bayar" class="translate-x-0.5">
                 </div>
