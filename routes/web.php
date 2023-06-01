@@ -3,6 +3,7 @@
 use App\Http\Controllers\HistoryController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\TransferController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -39,25 +40,17 @@ Route::get('/riwayat', [HistoryController::class, 'index'])->middleware(['auth']
 
 Route::post('/riwayat', [HistoryController::class, 'filter'])->middleware(['auth'])->name('riwayat.filter');
 
-Route::prefix('transfer')->group(function () {
-    Route::get('/qr', function () {
-        return view('transfer.qr');
-    });
-    Route::get('/manual', function () {
-        return view('transfer.manual');
-    });
-    Route::get('/nominal', function () {
-        return view('transfer.nominal');
-    });
-    Route::get('/konfirmasi', function () {
-        return view('transfer.konfirmasi');
-    });
-    Route::get('/pin', function () {
-        return view('transfer.inputpin');
-    });
-    Route::get('/berhasil', function () {
-        return view('transfer.berhasil');
-    });
+Route::prefix('transfer')->middleware(['auth'])->group(function () {
+    Route::get('/', [TransferController::class, 'index']);
+    Route::get('/manual', [TransferController::class, 'manual']);
+    Route::get('/qr', [TransferController::class, 'qr']);
+
+    Route::post('/nominal', [TransferController::class, 'nominal']);
+    Route::post('/konfirmasi', [TransferController::class, 'konfirmasi']);
+    Route::get('/pin', [TransferController::class, 'pin']);
+    Route::post('/pin', [TransferController::class, 'pin']);
+    Route::post('/store', [TransferController::class, 'store']);
+    Route::get('/berhasil', [TransferController::class, 'berhasil']);
 });
 
 Route::get('/dashboard', function () {
