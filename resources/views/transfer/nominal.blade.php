@@ -4,20 +4,22 @@
 <div>
     <div class='bg-grad-pink h-screen font-bolxtd w-full te-3xl px-6 flex flex-col items-center justify-center text-sm'>
         <div class="bg-white px-6 py-4 rounded-xl flex items-center justify-between w-72 mb-8 border border-c-blue-white shadow-c-25">
-            <img src="https://picsum.photos/200" alt="photo" class="rounded-full h-16 w-16">
+            <img src="{{ $customer->photo ?? 'https://picsum.photos/200' }}" alt="photo" class="rounded-full h-16 w-16">
             <div class="flex flex-col font-semibold">
-                <p class="text-sm mb-2">Yulina Budi Prayastiti</p>
-                <p class="text-xs">0811 2334 5678</p>
+                <p class="text-sm mb-2">{{ $customer->name }}</p>
+                <p class="text-xs">{{ $customer->phone_number }}</p>
             </div>
         </div>
-        <form action="" class="flex flex-col w-72">
-            <input type="text" id="inputNominal" placeholder="Masukkan Nominal" class="p-3 rounded-xl placeholder:text-gray-400 text-c-earlier-black border border-c-pink">
+        <form action="{{ url('/transfer/konfirmasi') }}" method="post" class="flex flex-col w-72">
+            @csrf
+            <input type="hidden" name="phone_number" value="{{ $customer->phone_number }}" />
+            <input type="text" name="nominal" id="nominal" placeholder="Masukkan Nominal" class="p-3 rounded-xl placeholder:text-gray-400 text-c-earlier-black border border-c-pink">
 
             <div class="flex gap-2">
                 <button class="bg-white w-1/2 font-semibold text-c-pink border border-c-pink px-6 py-2 rounded-xl mt-6">
                     BATAL
                 </button>
-                <button class="bg-c-pink w-1/2 font-semibold text-white px-6 py-2 rounded-xl mt-6">
+                <button type="submit" class="bg-c-pink w-1/2 font-semibold text-white px-6 py-2 rounded-xl mt-6">
                     LANJUTKAN
                 </button>
             </div>
@@ -35,21 +37,39 @@
             <button onclick="appendToInput('9')">9</button>
             <button onclick="appendToInput('0')">0</button>
             <button onclick="appendToInput('000')">000</button>
-            <button onclick="clearInput()">Clear</button>
+            <button onclick="clearInput()">'<<' </button>
         </div>
     </div>
 </div>
 <script>
+    // Retrieve the element by its ID
     function appendToInput(value) {
-        inputField = document.getElementById('inputNominal');
+        var currentVal = $('#nominal').val();
 
-        const currentValue = inputField.value;
-        var newValue = currentValue.replace(/^0+/, '') + value;
-        inputField.value = newValue;
+        if (currentVal.length < 14) {
+            $('#nominal').val(currentVal + value);
+        }
+
+        setColor();
     }
 
     function clearInput() {
-        document.getElementById('inputNominal').value = '';
+        var currentVal = $('#nominal').val();
+        $('#nominal').val(currentVal.slice(0, currentVal.length - 1));
+
+        setColor();
+    }
+
+    function setColor() {
+        var currentVal = $('#nominal').val();
+        var circles = $('.pin-circles > div');
+        for (var i = 0; i < circles.length; i++) {
+            if (i < currentVal.length) {
+                circles.eq(i).addClass('bg-yellow-400');
+            } else {
+                circles.eq(i).removeClass('bg-yellow-400');
+            }
+        }
     }
 </script>
 @endsection

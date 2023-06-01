@@ -2,45 +2,50 @@
 
 @section('content')
 <div>
-    <div class='bg-grad-pink h-screen font-bolxtd w-full te-3xl px-6 flex flex-col items-center justify-center text-sm'>
+    <div class='bg-grad-pink h-screen w-full px-6 flex flex-col items-center justify-center text-sm'>
         <a href="/transfer/qr" class="bg-red-500 rounded-xl p-4 mb-8">
             <img src="/images/transfer/icon-qr.svg" alt="icon-qr" class="text-white h-16 w-16 mx-auto mb-2">
             <p class="text-white font-semibold">Kembali Scan</p>
         </a>
-        <form action="" class="flex flex-col w-72">
-            <input type="text" id="inputNoHP" placeholder="Masukkan Nomor HP Penerima" class="p-3 rounded-xl placeholder:text-gray-400 text-c-earlier-black border border-c-pink">
+        <form action="{{ url('/transfer/nominal') }}" method="post" class="flex flex-col w-72">
+            @csrf
+            <input type="text" id="phone_number" name="phone_number" placeholder="Masukkan Nomor HP Penerima" class="p-3 rounded-xl placeholder:text-gray-400 text-c-earlier-black border border-c-pink">
+            <small class="w-full help-block text-danger text-center py-2 text-red-500">{{ $errors->has('phone_number') ? $errors->first('phone_number') : '' }}</small>
 
             <div class="grid grid-cols-3 gap-10 my-12 text-lg">
-                <button onclick="appendToInput(event, '1')">1</button>
-                <button onclick="appendToInput(event, '2')">2</button>
-                <button onclick="appendToInput(event, '3')">3</button>
-                <button onclick="appendToInput(event, '4')">4</button>
-                <button onclick="appendToInput(event, '5')">5</button>
-                <button onclick="appendToInput(event, '6')">6</button>
-                <button onclick="appendToInput(event, '7')">7</button>
-                <button onclick="appendToInput(event, '8')">8</button>
-                <button onclick="appendToInput(event, '9')">9</button>
+                <button type="button" onclick="appendToInput('1')">1</button>
+                <button type="button" onclick="appendToInput('2')">2</button>
+                <button type="button" onclick="appendToInput('3')">3</button>
+                <button type="button" onclick="appendToInput('4')">4</button>
+                <button type="button" onclick="appendToInput('5')">5</button>
+                <button type="button" onclick="appendToInput('6')">6</button>
+                <button type="button" onclick="appendToInput('7')">7</button>
+                <button type="button" onclick="appendToInput('8')">8</button>
+                <button type="button" onclick="appendToInput('9')">9</button>
                 <div></div>
-                <button onclick="appendToInput(event, '0')">0</button>
-                <button onclick="clearInput(event)">Clear</button>
+                <button type="button" onclick="appendToInput('0')">0</button>
+                <button type="button" onclick="clearInput()"> '<<' </button>
             </div>
 
             <button class="bg-c-pink font-semibold text-white px-6 py-2 rounded-xl mt-6">
                 LANJUTKAN
             </button>
-
         </form>
     </div>
 </div>
 <script>
-    function appendToInput(event, value) {
-        event.preventDefault();
-        document.getElementById('inputNoHP').value += value;
+    // Retrieve the element by its ID
+    function appendToInput(value) {
+        var currentVal = $('#phone_number').val();
+
+        if (currentVal.length < 14) {
+            $('#phone_number').val(currentVal + value);
+        }
     }
 
     function clearInput() {
-        event.preventDefault();
-        document.getElementById('inputNoHP').value = '';
+        var currentVal = $('#phone_number').val();
+        $('#phone_number').val(currentVal.slice(0, currentVal.length - 1));
     }
 </script>
 @endsection
