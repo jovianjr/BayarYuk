@@ -35,7 +35,9 @@ Route::get('/help', function () {
     return view('help');
 });
 
-Route::get('/riwayat', [HistoryController::class, 'index'])->middleware(['auth']);
+Route::get('/riwayat', [HistoryController::class, 'index'])->middleware(['auth'])->name('riwayat.index');
+
+Route::post('/riwayat', [HistoryController::class, 'filter'])->middleware(['auth'])->name('riwayat.filter');
 
 Route::prefix('transfer')->group(function () {
     Route::get('/qr', function () {
