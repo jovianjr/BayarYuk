@@ -28,7 +28,7 @@
             </label>
         </div>
 
-        <div class='bg-grad-pink h-screen font-bolxtd w-full te-3xl px-6 flex flex-col items-center justify-center text-sm'>
+        <div class='h-screen w-full text-3xl flex flex-col items-center justify-center text-sm'>
             <p class="font-semibold text-sm text-c-earlier-black">Masukkan PIN</p>
             <div class="flex items-center gap-4 mt-5 pin-circles">
                 <div id="pin1" class="bg-c-pink-white rounded-full h-6 w-6"></div>
@@ -54,7 +54,7 @@
                     <img src="/images/erase.svg" alt="erase" class="object-contain mx-auto">
                 </button>
             </div>
-            <x-button class="rounded-full text-white bg-c-pink w-16 h-16 text-2xl font-bold text-center p-3 pt-4">OK</x-button>
+            <x-button class="text-white !bg-c-pink w-16 h-16 text-center p-3 pt-4" style="border-radius: 100%; font-size: 18px;">OK</x-button>
         </div>
         @else
         <div class="flex flex-col items-center justify-between h-full">
