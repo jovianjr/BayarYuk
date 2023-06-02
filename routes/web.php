@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\HistoryController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\TransferController;
 use Illuminate\Support\Facades\Route;
@@ -57,21 +58,16 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
 
-require __DIR__ . '/auth.php';
 Route::prefix('bayar')->group(function () {
-    Route::get('/qr', function () {
-        return view('bayar.qr');
-    });
-    Route::get('/manual', function () {
-        return view('bayar.manual');
-    });
-    Route::get('/konfirmasi', function () {
-        return view('bayar.konfirmasi');
-    });
-    Route::get('/pin', function () {
-        return view('bayar.inputpin');
-    });
-    Route::get('/berhasil', function () {
-        return view('bayar.berhasil');
-    });
+    Route::get('/', [PaymentController::class, 'index']);
+    Route::get('/manual', [PaymentController::class, 'manual']);
+    Route::get('/qr', [PaymentController::class, 'qr']);
+    Route::get('/konfirmasi', [PaymentController::class, 'konfirmasi']);
+    Route::post('/konfirmasi', [PaymentController::class, 'konfirmasi']);
+    Route::get('/pin', [PaymentController::class, 'pin']);
+    Route::post('/pin', [PaymentController::class, 'pin']);
+    Route::post('/store', [PaymentController::class, 'store']);
+    Route::get('/berhasil', [PaymentController::class, 'berhasil']);
 });
+
+require __DIR__ . '/auth.php';
