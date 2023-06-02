@@ -10,7 +10,7 @@
             <p class='text-2xl text-white font-semibold'>Halo {{ $customer->name }}</p>
             <div class='text-right my-3'>
                 <p class='text-md text-white'>Saldo Anda</p>
-                <p class='text-2xl text-white font-semibold'>Rp {{ $customer->balance }}</p>
+                <p class='text-2xl text-white font-semibold'>Rp {{ number_format($customer->balance, 0, '', '.')}}</p>
             </div>
         </div>
     </div>
@@ -61,7 +61,7 @@
                         <p class='text-sm text-gray-400'>{{ $transaction->time }}</p>
                     </div>
                 </div>
-                <div class='flex-1 flex justify-end text-md font-semibold'>Rp {{$transaction->amount}}</div>
+                <div class='flex-1 flex justify-end text-md font-semibold'>Rp {{ number_format($transaction->amount, 0, '', '.')}}</div>
             </div>
             @endforeach
             <div class='w-full flex items-center justify-center '>

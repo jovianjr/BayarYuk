@@ -15,11 +15,11 @@ class CreatePaymentsTable extends Migration
     {
         Schema::create('payments', function (Blueprint $table) {
             $table->uuid('id')->primary();
-            $table->string('from_account_id', 36);
-            $table->string('to_account_id', 36);
+            $table->string('from_account_id', 36)->nullable();
+            $table->string('to_account_id', 36)->nullable();
             $table->decimal('amount', 20, 2);
             $table->string('payment_code', 40)->nullable();
-            $table->string('status', 40)->default('WAITING');
+            $table->string('status', 40)->default('');
             $table->timestamps();
             $table->softDeletes();
         });

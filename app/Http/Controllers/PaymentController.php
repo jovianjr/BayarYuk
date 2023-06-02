@@ -38,9 +38,8 @@ class PaymentController extends Controller
             Validator::make($request->all(), [
                 'payment_code' => [
                     'required',
-                    function (string $attribute, string $value, Closure $fail) use ($request) {
-                        $processedValue = $request->type == 'qr' ? Crypt::decryptString($value) : $value;
-                        $payment = Payment::where(['payment_code' => $processedValue])->first();
+                    function (string $attribute, string $value, Closure $fail) {
+                        $payment = Payment::where(['payment_code' => $value])->first();
                         if (!$payment) {
                             $fail("Kode pembayaran tidak ditemukan");
                         }
@@ -51,7 +50,6 @@ class PaymentController extends Controller
             ])->validate();
 
         $payment_code = $request->payment_code ?? old('payment_code');
-        $payment_code = $request->type == 'qr' ? Crypt::decryptString($payment_code) : $payment_code;
 
         $payment = Payment::select(['amount', 'payment_code', 'to_account_id'])->where(['payment_code' => $payment_code])->first();
         $customer = Customer::select(['name', 'photo'])->where(['user_id' => $payment->to_account_id])->first();
@@ -111,11 +109,12 @@ class PaymentController extends Controller
         DB::beginTransaction();
 
 
+        $user = Auth::user();
         $payment = Payment::where(['payment_code' => $request->payment_code])->first();
+        $payment->from_account_id = $user->id;
         $payment->status = 'SUCCESS';
         $paymentSaved = $payment->save();
 
-        $user = Auth::user();
         $user->balance -= $payment->amount;
         $userSaved = $user->save();
 

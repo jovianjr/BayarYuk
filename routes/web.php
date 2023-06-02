@@ -71,6 +71,9 @@ Route::prefix('bayar')->middleware(['auth'])->group(function () {
 
 Route::prefix('pembayaran')->middleware(['auth'])->group(function () {
     Route::get('/', [AdminPaymentController::class, 'index']);
+    Route::get('/tambah', [AdminPaymentController::class, 'add']);
+    Route::post('/store', [AdminPaymentController::class, 'store']);
+    Route::get('/detail/{id}', [AdminPaymentController::class, 'detail']);
 });
 
 require __DIR__ . '/auth.php';
