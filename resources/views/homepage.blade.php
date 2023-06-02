@@ -2,6 +2,10 @@
 
 @section('content')
 <div class='bg-grad-pink-2 h-screen w-full flex flex-col items-center text-sm max-h-screen overflow-scroll'>
+    <div class="self-start">
+        <img src="/images/logo_by.png" alt="Logo" class="w-20 aspect-square ml-6 mt-2" />
+    </div>
+
     <div class='flex-1 flex w-full py-6 px-6 items-center justify-center'>
         <div class="bg-[url('/images/bg.png')] w-full h-[150px] rounded-xl p-5">
             <p class='text-2xl text-white font-semibold'>Halo {{ $customer->name }}</p>
