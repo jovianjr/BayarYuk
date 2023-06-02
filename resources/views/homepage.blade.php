@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('content')
-<div class='bg-grad-pink-2 h-screen w-full flex flex-col items-center text-sm max-h-screen overflow-scroll'>
+<div class='bg-grad-pink-2 h-screen w-full flex flex-col items-center text-sm max-h-screen overflow-auto'>
     <div class='flex-1 flex w-full py-6 px-6 items-center justify-center'>
         <div class="bg-[url('/images/bg.png')] w-full h-[150px] rounded-xl p-5">
             <p class='text-2xl text-white font-semibold'>Halo {{ $customer->name }}</p>
