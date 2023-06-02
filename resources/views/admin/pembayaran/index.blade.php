@@ -3,7 +3,7 @@
 @section('content')
 @include('includes.header', ['pageTitle'=>'Riwayat Pembayaran', 'back'=>'/'])
 <div class='bg-grad-pink-2 h-full w-full flex flex-col items-center text-sm max-h-screen overflow-auto px-8 pt-28 pb-4'>
-    <div class='bg-white min-h-[80vh] w-full h-auto flex flex-col px-4 py-6 rounded-lg justify-between'>
+    <div class='bg-white w-full h-auto flex flex-col px-4 py-6 rounded-lg justify-between'>
         <div class='flex flex-col gap-4'>
             <p class='text-base font-bold'>Riwayat Pembayaran</p>
             @foreach ($payments as $payment)
@@ -24,7 +24,7 @@
             </div>
             @endforeach
         </div>
-        <a href="{{ url('/pembayaran/tambah')}}" class='py-2 bg-c-pink text-white text-center rounded-sm font-semibold'>Tambah</a>
+        <a href="{{ url('/pembayaran/tambah')}}" class='mt-4 py-2 bg-c-pink text-white text-center rounded-sm font-semibold'>Tambah</a>
     </div>
 </div>
 @endsection
