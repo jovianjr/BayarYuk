@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('content')
-@include('includes.header', ['pageTitle'=>'Transfer ke Pengguna', 'back'=>'/bayar'])
+@include('includes.header', ['pageTitle'=>'Konfirmasi Bayar', 'back'=>'/bayar'])
 <div>
     <form action="{{ url('/bayar/pin') }} " method="post" class='bg-grad-pink h-screen font-bolxtd w-full te-3xl px-6 flex flex-col items-center justify-center text-sm'>
         @csrf

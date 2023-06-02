@@ -35,8 +35,10 @@ class HomeController extends Controller
                 ->orderBy('created_at', 'DESC')
                 ->get();
 
-
-            return view('homepage', ['customer' => $customerData, 'transactions' => $transactions]);
+            if ($user->account_type == 'normal') {
+                return view('homepage', ['customer' => $customerData, 'transactions' => $transactions]);
+            } else if ($user->account_type == 'partner') {
+                return view('admin.homepage', ['customer' => $customerData, 'transactions' => $transactions]);
         } else {
             return view('welcome');
         }

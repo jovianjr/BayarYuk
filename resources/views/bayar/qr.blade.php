@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('content')
-@include('includes.header', ['pageTitle'=>'Transfer ke Pengguna', 'back'=>'/'])
+@include('includes.header', ['pageTitle'=>'Bayar', 'back'=>'/'])
 <div>
     <div class='bg-grad-pink h-screen font-bolxtd w-full te-3xl px-6 flex flex-col items-center justify-center text-sm'>
         <form action="{{ url('/bayar/konfirmasi') }}" method="post" class="flex flex-col w-72" id="inputForm">
