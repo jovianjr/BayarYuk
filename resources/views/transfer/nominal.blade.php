@@ -16,9 +16,9 @@
             <input type="text" name="nominal" id="nominal" placeholder="Masukkan Nominal" class="p-3 rounded-xl placeholder:text-gray-400 text-c-earlier-black border border-c-pink">
 
             <div class="flex gap-2">
-                <button class="bg-white w-1/2 font-semibold text-c-pink border border-c-pink px-6 py-2 rounded-xl mt-6">
+                <a href="{{ url('/transfer') }}" class="bg-white w-1/2 font-semibold text-c-pink border border-c-pink px-6 py-2 rounded-xl mt-6">
                     BATAL
-                </button>
+                </a>
                 <button type="submit" class="bg-c-pink w-1/2 font-semibold text-white px-6 py-2 rounded-xl mt-6">
                     LANJUTKAN
                 </button>
