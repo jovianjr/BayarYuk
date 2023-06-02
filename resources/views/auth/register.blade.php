@@ -2,7 +2,7 @@
     <x-auth-card>
         <x-slot name="logo">
             <a href="/">
-                <x-application-logo class="w-20 h-20 fill-current text-gray-500" />
+                <img src="images/logo_by.png" alt="logo" class="w-16 aspect-square">
             </a>
         </x-slot>
 
@@ -14,9 +14,9 @@
 
             <!-- Phone Number -->
             <div class="mt-4">
-                <x-label for="phone_number" :value="__('phone_number')" />
+                <x-label for="phone_number" :value="__('Phone Number')" />
 
-                <x-input id="phone_number" class="block mt-1 w-full" type="number" name="phone_number" :value="old('phone_number')" required />
+                <x-input id="phone_number" class="block mt-1 w-full" type="text" name="phone_number" :value="old('phone_number')" required />
             </div>
 
             <!-- Email Address -->
@@ -35,30 +35,33 @@
 
             <!-- Name -->
             <div>
-                <x-label for="address" :value="__('address')" />
+                <x-label for="address" :value="__('Address')" />
 
                 <x-input id="address" class="block mt-1 w-full" type="text" name="address" :value="old('address')" required autofocus />
             </div>
 
             <!-- Name -->
             <div>
-                <x-label for="birth_date" :value="__('birth_date')" />
+                <x-label for="birth_date" :value="__('Birth Date')" />
 
                 <x-input id="birth_date" class="block mt-1 w-full" type="date" name="birth_date" :value="old('birth_date')" required autofocus />
             </div>
 
             <!-- Name -->
             <div>
-                <x-label for="birth_place" :value="__('birth_place')" />
+                <x-label for="birth_place" :value="__('Birth Place')" />
 
                 <x-input id="birth_place" class="block mt-1 w-full" type="text" name="birth_place" :value="old('birth_place')" required autofocus />
             </div>
 
             <!-- Name -->
             <div>
-                <x-label for="account_type" :value="__('account_type')" />
+                <x-label for="account_type" :value="__('Account Type')" />
 
-                <x-input id="account_type" class="block mt-1 w-full" type="text" name="account_type" :value="old('account_type')" required autofocus />
+                <select id="account_type" name="account_type" class="block mt-1 w-full" required autofocus>
+                    <option value="normal">Normal</option>
+                    <option value="partner">Partner</option>
+                </select>
             </div>
 
             <!-- Password -->
@@ -76,9 +79,9 @@
             </div>
 
             <div class="flex items-center justify-end mt-4">
-                <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('login') }}">
+                <!-- <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('login') }}">
                     {{ __('Already registered?') }}
-                </a>
+                </a> -->
 
                 <x-button class="ml-4">
                     {{ __('Register') }}
