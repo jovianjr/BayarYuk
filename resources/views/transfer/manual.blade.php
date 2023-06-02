@@ -24,7 +24,9 @@
                 <button type="button" onclick="appendToInput('9')">9</button>
                 <div></div>
                 <button type="button" onclick="appendToInput('0')">0</button>
-                <button type="button" onclick="clearInput()"> '<<' </button>
+                <button type="button" onclick="clearInput(event)">
+                    <img src="/images/erase.svg" alt="erase" class="object-contain mx-auto">
+                </button>
             </div>
 
             <button class="bg-c-pink font-semibold text-white px-6 py-2 rounded-xl mt-6">

@@ -17,7 +17,7 @@
             <div id="pin5" class="bg-c-pink-white rounded-full h-6 w-6"></div>
             <div id="pin6" class="bg-c-pink-white rounded-full h-6 w-6"></div>
         </div>
-        <small class="w-full help-block text-danger text-center py-2 text-red-500">{{ $errors->has('pin') ? $errors->first('pin') : '' }}</small>
+        <medium class="w-full help-block text-danger text-center py-2 text-red-500">{{ $errors->has('pin') ? $errors->first('pin') : '' }}</medium>
         <div class="grid grid-cols-3 gap-4 my-12 text-2xl font-bold text-c-earlier-black">
             <button type="button" onclick="appendToInput('1')" class="rounded-full bg-white py-4 px-6">1</button>
             <button type="button" onclick="appendToInput('2')" class="rounded-full bg-white py-4 px-6">2</button>
