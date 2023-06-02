@@ -13,10 +13,10 @@ class QrController extends Controller
     public function index()
     {
         $user = Auth::user();
-        $customer = Customer::select('phone_number')->where(['user_id' => $user->id])->first();
+        $customer = Customer::select(['name', 'phone_number'])->where(['user_id' => $user->id])->first();
         $encrytPhone = Crypt::encryptString($customer->phone_number);
         $qrCode = QrCode::size(250)->generate($encrytPhone);
 
-        return view('qr.index', ['qrCode' => $qrCode]);
+        return view('qr.index', ['customer' => $customer, 'qrCode' => $qrCode]);
     }
 }
