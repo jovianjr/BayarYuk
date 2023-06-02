@@ -1,9 +1,10 @@
 @extends('layouts.master')
 
 @section('content')
+@include('includes.header', ['pageTitle'=>'Riwayat', 'back'=>'/'])
 <div>
     <div class='bg-white h-screen p-6 w-full te-3xl flex flex-col items-center text-sm gap-3'>
-        <p class='text-2xl font-bold text-left w-full p-2'>Riwayat Transaksi</p>
+        <p class='text-2xl font-bold text-left w-full p-2 mt-12'>Riwayat Transaksi</p>
 
         <form class='flex flex-row gap-3 items-center justify-center w-full p-2'>
             <input type="text" id="inputQuery" placeholder="Masukkan kata kunci pencarian" class="w-full p-3 rounded-xl placeholder:text-gray-400 text-c-earlier-black border border-c-blue-white text-sm pl-8">
