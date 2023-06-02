@@ -48,6 +48,6 @@
         </div>
     </div>
 
-    @include('includes.floatybar')
+    @include('includes.admin.floatybar')
 </div>
 @endsection

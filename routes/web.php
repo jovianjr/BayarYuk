@@ -7,6 +7,8 @@ use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\QrController;
 use App\Http\Controllers\TransferController;
+
+use App\Http\Controllers\Admin\PaymentController as AdminPaymentController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -52,7 +54,7 @@ Route::prefix('transfer')->middleware(['auth'])->group(function () {
     Route::get('/berhasil', [TransferController::class, 'berhasil']);
 });
 
-Route::prefix('bayar')->group(function () {
+Route::prefix('bayar')->middleware(['auth'])->group(function () {
     Route::get('/', [PaymentController::class, 'index']);
     Route::get('/manual', [PaymentController::class, 'manual']);
     Route::get('/qr', [PaymentController::class, 'qr']);
@@ -65,6 +67,10 @@ Route::prefix('bayar')->group(function () {
 
     Route::post('/store', [PaymentController::class, 'store']);
     Route::get('/berhasil', [PaymentController::class, 'berhasil']);
+});
+
+Route::prefix('pembayaran')->middleware(['auth'])->group(function () {
+    Route::get('/', [AdminPaymentController::class, 'index']);
 });
 
 require __DIR__ . '/auth.php';
