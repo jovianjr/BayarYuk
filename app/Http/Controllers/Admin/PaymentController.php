@@ -56,7 +56,7 @@ class PaymentController extends Controller
 
         if ($paymentSaved) {
             DB::commit();
-            return redirect('/detail/{{ $payment->payment_code }}');
+            return redirect('/detail' . '/' . $payment->payment_code);
         } else {
             DB::rollback();
             return redirect()->back()->with('error', 'Sedang terjadi kesalahan');
