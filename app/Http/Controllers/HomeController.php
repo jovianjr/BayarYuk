@@ -24,7 +24,7 @@ class HomeController extends Controller
             'amount',
             'created_at',
             DB::raw('"transfer" as type'),
-            DB::raw('IF(from_account_id = "' . $user->id . '", "IN", IF(to_account_id = "' . $user->id . '", "OUT", "")) as status'),
+            DB::raw('IF(from_account_id = "' . $user->id . '", "OUT", IF(to_account_id = "' . $user->id . '", "IN", "")) as status'),
             DB::raw("DATE_FORMAT(created_at, '%d %M %Y') AS date"),
             DB::raw("DATE_FORMAT(created_at, '%H:%i') AS time")
         ])
