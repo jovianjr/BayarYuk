@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\HelpController;
 use App\Http\Controllers\HistoryController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PaymentController;
@@ -30,9 +31,7 @@ Route::get('/homepage', function () {
     return view('homepage');
 });
 
-Route::get('/help', function () {
-    return view('help');
-});
+Route::get('/help', [HelpController::class, 'index'])->middleware(['auth'])->name('help');
 
 Route::get('/riwayat', [HistoryController::class, 'index'])->middleware(['auth'])->name('riwayat.index');
 
