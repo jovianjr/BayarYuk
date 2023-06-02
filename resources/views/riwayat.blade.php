@@ -53,7 +53,7 @@
                 <h1 class="text-2xl font-semibold">Filter berdasarkan</h1>
                 <p class="font-semibold text-lg mt-6">Kategori</p>
                 <label class="text-lg py-1">
-                    <input type="radio" name="kategori" value="Semua">
+                    <input type="radio" name="kategori" value="">
                     Semua
                 </label>
                 <label class="text-lg py-1">
