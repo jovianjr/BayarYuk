@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Closure;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 
@@ -37,8 +38,9 @@ class PaymentController extends Controller
             Validator::make($request->all(), [
                 'payment_code' => [
                     'required',
-                    function (string $attribute, string $value, Closure $fail) {
-                        $payment = Payment::where(['payment_code' => $value])->first();
+                    function (string $attribute, string $value, Closure $fail) use ($request) {
+                        $processedValue = $request->type == 'qr' ? Crypt::decryptString($value) : $value;
+                        $payment = Payment::where(['payment_code' => $processedValue])->first();
                         if (!$payment) {
                             $fail("Kode pembayaran tidak ditemukan");
                         }
@@ -48,7 +50,10 @@ class PaymentController extends Controller
                 'required' => 'Harus di isi',
             ])->validate();
 
-        $payment = Payment::select(['amount', 'payment_code', 'to_account_id'])->where(['payment_code' => $request->payment_code ?? old('payment_code')])->first();
+        $payment_code = $request->payment_code ?? old('payment_code');
+        $payment_code = $request->type == 'qr' ? Crypt::decryptString($payment_code) : $payment_code;
+
+        $payment = Payment::select(['amount', 'payment_code', 'to_account_id'])->where(['payment_code' => $payment_code])->first();
         $customer = Customer::select(['name', 'photo'])->where(['user_id' => $payment->to_account_id])->first();
 
         return view('bayar.konfirmasi', ['customer' => $customer, 'payment' => $payment]);
