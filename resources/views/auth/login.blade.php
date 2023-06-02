@@ -28,7 +28,8 @@
             </label>
         </div>
 
-        <div class='h-screen w-full text-3xl flex flex-col items-center justify-center text-sm'>
+        <div class='w-full text-3xl flex flex-col items-center justify-center text-sm'>
+            <img src="/images/logo_by.png" alt="Login Illustration" class="w-20 aspect-square" />
             <p class="font-semibold text-sm text-c-earlier-black">Masukkan PIN</p>
             <div class="flex items-center gap-4 mt-5 pin-circles">
                 <div id="pin1" class="bg-c-pink-white rounded-full h-6 w-6"></div>
@@ -58,7 +59,7 @@
         </div>
         @else
         <div class="flex flex-col items-center justify-between h-full">
-            <img src="/images/welcome/saving.png" alt="Login Illustration" class="w-10 aspect-square" />
+            <img src="/images/logo_by.png" alt="Logo" class="w-20 aspect-square" />
             <img src="/images/welcome/saving.png" alt="Login Illustration" class="w-3/4 aspect-square" />
 
             <div class="flex flex-col items-center justify-center gap-6">
