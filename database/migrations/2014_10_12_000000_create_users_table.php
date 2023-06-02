@@ -16,6 +16,7 @@ class CreateUsersTable extends Migration
         Schema::create('users', function (Blueprint $table) {
             $table->uuid('id')->primary();
             $table->string('password');
+            $table->string('app_key')->unique()->nullable();
             $table->rememberToken();
             $table->string('account_type', 255)->default('normal');
             $table->decimal('balance', 20, 2)->default(0);

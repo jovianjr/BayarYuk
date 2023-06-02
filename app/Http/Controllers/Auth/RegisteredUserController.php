@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
+use Illuminate\Support\Str;
 
 class RegisteredUserController extends Controller
 {
@@ -52,6 +53,7 @@ class RegisteredUserController extends Controller
             $user = User::create([
                 'password' => Hash::make($request->password),
                 'account_type' => $request->account_type,
+                'app_key' => Str::random(32)
             ]);
 
             $user->customer()->create([
