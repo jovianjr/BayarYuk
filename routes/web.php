@@ -24,10 +24,7 @@ Route::get('/coba', function () {
     return view('inputpin');
 });
 
-Route::prefix('profile')->group(function () {
-    Route::get('/', [ProfileController::class, 'index'])->middleware(['auth']);
-});
-
+Route::get('/profile', [ProfileController::class, 'index'])->middleware(['auth'])->name('profile');
 
 Route::get('/homepage', function () {
     return view('homepage');
