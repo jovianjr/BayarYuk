@@ -1,11 +1,12 @@
 @extends('layouts.master')
 
 @section('content')
+@include('includes.header', ['pageTitle'=>'Bantuan', 'back'=>'/'])
 <div>
-    <div class='bg-grad-pink h-screen font-bolxtd w-full te-1xl px-2 flex flex-col items-center justify-center text-sm px-6 relative overflow-hidden'>
+    <div class='py-24 bg-grad-pink h-screen w-full px-2 flex flex-col items-center justify-center text-sm px-6 relative overflow-hidden'>
         <div class="absolute -top-[30%] w-[530px] h-[530px] bg-c-pink rounded-full"></div>
-        <h1 class="text-white text-2xl self-start z-10 font-bold text-center m-auto">Halo Fiorenza,</h1>
-        <h1 class="text-white text-2xl self-start z-10 font-bold text-center m-auto">perlu bantuan?</h1>
+        <h1 class="text-white text-2xl z-10 font-bold m-auto">Halo Fiorenza,</h1>
+        <h1 class="text-white text-2xl z-10 font-bold m-auto">perlu bantuan?</h1>
 
         <form class='flex flex-row gap-3 items-center justify-center w-full my-4 z-10'>
             <input type="text" id="inputQuery" placeholder="Masukkan kata kunci pencarian" class="w-full p-3 rounded-xl placeholder:text-gray-400 text-c-earlier-black border border-c-blue-white text-sm pl-12">

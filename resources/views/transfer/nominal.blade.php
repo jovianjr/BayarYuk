@@ -1,6 +1,7 @@
 @extends('layouts.master')
 
 @section('content')
+@include('includes.header', ['pageTitle'=>'Transfer ke Pengguna', 'back'=>'/transfer'])
 <div>
     <div class='bg-grad-pink h-screen font-bolxtd w-full te-3xl px-6 flex flex-col items-center justify-center text-sm'>
         <div class="bg-white px-6 py-4 rounded-xl flex items-center justify-between w-72 mb-8 border border-c-blue-white shadow-c-25">
