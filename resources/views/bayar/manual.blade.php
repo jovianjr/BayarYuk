@@ -7,40 +7,15 @@
             <img src="/images/transfer/icon-qr.svg" alt="icon-qr" class="text-white h-16 w-16 mx-auto mb-2">
             <p class="text-white font-semibold">Kembali Scan</p>
         </a>
-        <form action="" class="flex flex-col w-72">
-            <input type="text" id="inputNoHP" placeholder="Masukkan Nomor HP Penerima" class="p-3 rounded-xl placeholder:text-gray-400 text-c-earlier-black border border-c-pink">
-
-            <div class="grid grid-cols-3 gap-10 my-12 text-lg">
-                <button onclick="appendToInput(event, '1')">1</button>
-                <button onclick="appendToInput(event, '2')">2</button>
-                <button onclick="appendToInput(event, '3')">3</button>
-                <button onclick="appendToInput(event, '4')">4</button>
-                <button onclick="appendToInput(event, '5')">5</button>
-                <button onclick="appendToInput(event, '6')">6</button>
-                <button onclick="appendToInput(event, '7')">7</button>
-                <button onclick="appendToInput(event, '8')">8</button>
-                <button onclick="appendToInput(event, '9')">9</button>
-                <div></div>
-                <button onclick="appendToInput(event, '0')">0</button>
-                <button onclick="clearInput(event)">Clear</button>
-            </div>
-
-            <button class="bg-c-pink font-semibold text-white px-6 py-2 rounded-xl mt-6">
+        <form action="{{ url('/bayar/konfirmasi') }}" method="post" class="flex flex-col w-72">
+            @csrf
+            <input type="text" name="payment_code" placeholder="Masukkan Kode Pembayaran" class="p-3 rounded-xl placeholder:text-gray-400 text-c-earlier-black border border-c-pink">
+            <small class="w-full help-block text-danger text-center py-2 text-red-500">{{ $errors->has('payment_code') ? $errors->first('payment_code') : '' }}</small>
+            <button type="submit" class="bg-c-pink font-semibold text-white px-6 py-2 rounded-xl mt-6">
                 LANJUTKAN
             </button>
 
         </form>
     </div>
 </div>
-<script>
-    function appendToInput(event, value) {
-        event.preventDefault();
-        document.getElementById('inputNoHP').value += value;
-    }
-
-    function clearInput() {
-        event.preventDefault();
-        document.getElementById('inputNoHP').value = '';
-    }
-</script>
 @endsection

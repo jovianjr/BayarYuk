@@ -52,7 +52,6 @@ class RegisteredUserController extends Controller
             $user = User::create([
                 'password' => Hash::make($request->password),
                 'account_type' => $request->account_type,
-                'balance' => 0,
             ]);
 
             $user->customer()->create([
