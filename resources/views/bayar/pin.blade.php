@@ -4,6 +4,7 @@
 <div>
     <form action="{{ url('/bayar/store') }}" method="post" class='bg-grad-pink h-screen font-bolxtd w-full te-3xl px-6 flex flex-col items-center justify-center text-sm'>
         @csrf
+        <img src="images/logo_by.png" alt="logo" class="w-16 aspect-square">
         <p class="font-semibold text-sm text-c-earlier-black">Masukkan PIN</p>
         <input name="pin" id="pin" type="password" class="hidden" maxlength="6">
         <small class="w-full help-block text-danger text-center py-2 text-red-500">{{ $errors->has('pin') ? $errors->first('pin') : '' }}</small>

@@ -4,6 +4,7 @@
 <div>
     <form action="{{ url('/transfer/store') }}" method="post" class='bg-grad-pink h-screen font-bolxtd w-full te-3xl px-6 flex flex-col items-center justify-center text-sm'>
         @csrf
+        <img src="images/logo_by.png" alt="logo" class="w-16 aspect-square">
         <p class="font-semibold text-sm text-c-earlier-black">Masukkan PIN</p>
         <input name="pin" id="pin" type="password" class="hidden" maxlength="6">
         <input name="phone_number" value="{{ $customer->phone_number ?? old('phone_number') }}" type="password" class="hidden" maxlength="6">
