@@ -39,7 +39,7 @@
                         <p class='text-sm text-gray-400'>{{ $transaction->time }}</p>
                     </div>
                 </div>
-                <div class='flex-1 flex justify-end text-md font-semibold'>Rp {{$transaction->amount}}</div>
+                <div class='flex-1 flex justify-end text-md font-semibold'>Rp {{ number_format($transaction->amount, 0, '', '.')}}</div>
             </div>
             @endforeach
             @endif

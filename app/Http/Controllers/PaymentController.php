@@ -39,7 +39,8 @@ class PaymentController extends Controller
                 'payment_code' => [
                     'required',
                     function (string $attribute, string $value, Closure $fail) {
-                        $payment = Payment::where(['payment_code' => $value])->first();
+                        $payment = Payment::where(['payment_code' => $value])
+                            ->where('status', '!=', "SUCCESS")->first();
                         if (!$payment) {
                             $fail("Kode pembayaran tidak ditemukan");
                         }
