@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\HelpController;
 use App\Http\Controllers\HistoryController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PaymentController;
@@ -25,13 +26,14 @@ Route::prefix('profile')->middleware(['auth'])->group(function () {
     Route::get('/', [ProfileController::class, 'index']);
 });
 
+
+Route::get('/profile', [ProfileController::class, 'index'])->middleware(['auth'])->name('profile');
+
 Route::prefix('qr')->middleware(['auth'])->group(function () {
     Route::get('/', [QrController::class, 'index']);
 });
 
-Route::get('/help', function () {
-    return view('help');
-});
+Route::get('/help', [HelpController::class, 'index'])->middleware(['auth'])->name('help');
 
 Route::prefix('riwayat')->middleware(['auth'])->group(function () {
     Route::get('/', [HistoryController::class, 'index'])->name('riwayat.index');

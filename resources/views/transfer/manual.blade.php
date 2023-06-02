@@ -1,6 +1,7 @@
 @extends('layouts.master')
 
 @section('content')
+@include('includes.header', ['pageTitle'=>'Transfer ke Pengguna', 'back'=>'/'])
 <div>
     <div class='bg-grad-pink h-screen w-full px-6 flex flex-col items-center justify-center text-sm'>
         <a href="/transfer/qr" class="bg-red-500 rounded-xl p-4 mb-8">
