@@ -18,7 +18,7 @@
             <small class="w-full help-block text-danger text-center py-2 text-red-500">{{ $errors->has('nominal') ? $errors->first('nominal') : '' }}</small>
 
             <div class="flex gap-2">
-                <a href="{{ url('/transfer') }}" class="bg-white w-1/2 font-semibold text-c-pink border border-c-pink px-6 py-2 rounded-xl mt-6">
+                <a href="{{ url('/transfer') }}" class="bg-white w-1/2 font-semibold text-center text-c-pink border border-c-pink px-6 py-2 rounded-xl mt-6">
                     BATAL
                 </a>
                 <button type="submit" class="bg-c-pink w-1/2 font-semibold text-white px-6 py-2 rounded-xl mt-6">
@@ -27,7 +27,7 @@
             </div>
         </form>
 
-        <div class="grid grid-cols-3 gap-10 mt-12 text-lg">
+        <div class="grid grid-cols-3 gap-10 mt-6 text-lg">
             <button type="button" onclick="appendToInput('1')">1</button>
             <button type="button" onclick="appendToInput('2')">2</button>
             <button type="button" onclick="appendToInput('3')">3</button>

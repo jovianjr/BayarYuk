@@ -3,7 +3,7 @@
 @section('content')
 @include('includes.header', ['pageTitle'=>'Transfer ke Pengguna', 'back'=>'/'])
 <div>
-    <div class='bg-grad-pink h-screen w-full px-6 flex flex-col items-center justify-center text-sm'>
+    <div class='bg-grad-pink h-screen w-full px-6 flex flex-col items-center justify-center text-sm pt-16'>
         <a href="/transfer/qr" class="bg-red-500 rounded-xl p-4 mb-8">
             <img src="/images/transfer/icon-qr.svg" alt="icon-qr" class="text-white h-16 w-16 mx-auto mb-2">
             <p class="text-white font-semibold">Kembali Scan</p>
@@ -13,7 +13,7 @@
             <input type="text" id="phone_number" name="phone_number" placeholder="Masukkan Nomor HP Penerima" class="p-3 rounded-xl placeholder:text-gray-400 text-c-earlier-black border border-c-pink">
             <small class="w-full help-block text-danger text-center py-2 text-red-500">{{ $errors->has('phone_number') ? $errors->first('phone_number') : '' }}</small>
 
-            <div class="grid grid-cols-3 gap-10 my-12 text-lg">
+            <div class="grid grid-cols-3 gap-10 my-6 text-lg">
                 <button type="button" onclick="appendToInput('1')">1</button>
                 <button type="button" onclick="appendToInput('2')">2</button>
                 <button type="button" onclick="appendToInput('3')">3</button>
