@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Closure;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 
@@ -37,8 +38,9 @@ class TransferController extends Controller
             Validator::make($request->all(), [
                 'phone_number' => [
                     'required',
-                    function (string $attribute, string $value, Closure $fail) {
-                        $customer = Customer::where(['phone_number' => $value])->first();
+                    function (string $attribute, string $value, Closure $fail) use ($request) {
+                        $processedValue = $request->type == 'qr' ? Crypt::decryptString($value) : $value;
+                        $customer = Customer::where(['phone_number' => $processedValue])->first();
                         if (!$customer) {
                             $fail("Tujuan tidak ditemukan");
                         }
@@ -48,7 +50,9 @@ class TransferController extends Controller
                 'required' => 'Harus di isi',
             ])->validate();
 
-        $customer = Customer::select(['name', 'phone_number', 'photo'])->where(['phone_number' => $request->phone_number ?? old('phone_number')])->first();
+        $phone_number = $request->phone_number ?? old('phone_number');
+        $phone_number = $request->type == 'qr' ? Crypt::decryptString($phone_number) : $phone_number;
+        $customer = Customer::select(['name', 'phone_number', 'photo'])->where(['phone_number' => $phone_number])->first();
 
         return view('transfer.nominal', ['customer' => $customer]);
     }

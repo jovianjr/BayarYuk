@@ -12,14 +12,20 @@
         </div>
     </div>
     <div class=' w-full bg-white rounded-t-xl pt-6 px-6 pb-28'>
-        <div class='flex flex-row items-center justify-start py-5'>
-            <a href="transfer/qr" type="button" class="flex-1 inline-flex flex-row items-center justify-center pr-10 gap-3">
+        <div class='flex items-center justify-between py-5 w-full'>
+            <a href="qr" type="button" class="flex-1 inline-flex flex-col gap-2 items-center justify-center">
+                <div class='bg-blue-300 rounded-full p-2'>
+                    <span class="iconify" data-icon="fluent:money-hand-24-regular" data-width="28" data-height="28"></span>
+                </div>
+                <p class='text-sm font-semibold'>QR</p>
+            </a>
+            <a href="transfer/qr" type="button" class="flex-1 inline-flex flex-col gap-2 items-center justify-center">
                 <div class='bg-blue-300 rounded-full p-2'>
                     <span class="iconify" data-icon="fluent:money-hand-24-regular" data-width="28" data-height="28"></span>
                 </div>
                 <p class='text-sm font-semibold'>Transfer</p>
             </a>
-            <a href="bayar/qr" type="button" class="flex-1 inline-flex flex-row items-center justify-center pr-10 gap-3">
+            <a href="bayar/qr" type="button" class="flex-1 inline-flex flex-col gap-2 items-center justify-center">
                 <div class='bg-blue-300 rounded-full p-2'>
                     <span class="iconify" data-icon="fluent:money-hand-24-regular" data-width="28" data-height="28"></span>
                 </div>

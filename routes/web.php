@@ -1,9 +1,11 @@
 <?php
 
+use App\Http\Controllers\HelpController;
 use App\Http\Controllers\HistoryController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\QrController;
 use App\Http\Controllers\TransferController;
 use Illuminate\Support\Facades\Route;
 
@@ -20,23 +22,18 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [HomeController::class, 'index'])->middleware(['auth']);
 
-Route::get('/coba', function () {
-    return view('inputpin');
-});
-
 Route::get('/profile', [ProfileController::class, 'index'])->middleware(['auth'])->name('profile');
 
-Route::get('/homepage', function () {
-    return view('homepage');
+Route::prefix('qr')->middleware(['auth'])->group(function () {
+    Route::get('/', [QrController::class, 'index']);
 });
 
-Route::get('/help', function () {
-    return view('help');
+Route::get('/help', [HelpController::class, 'index'])->middleware(['auth'])->name('help');
+
+Route::prefix('riwayat')->middleware(['auth'])->group(function () {
+    Route::get('/', [HistoryController::class, 'index'])->name('riwayat.index');
+    Route::post('/', [HistoryController::class, 'filter'])->name('riwayat.filter');
 });
-
-Route::get('/riwayat', [HistoryController::class, 'index'])->middleware(['auth'])->name('riwayat.index');
-
-Route::post('/riwayat', [HistoryController::class, 'filter'])->middleware(['auth'])->name('riwayat.filter');
 
 Route::prefix('transfer')->middleware(['auth'])->group(function () {
     Route::get('/', [TransferController::class, 'index']);
@@ -54,10 +51,6 @@ Route::prefix('transfer')->middleware(['auth'])->group(function () {
     Route::post('/store', [TransferController::class, 'store']);
     Route::get('/berhasil', [TransferController::class, 'berhasil']);
 });
-
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
 
 Route::prefix('bayar')->group(function () {
     Route::get('/', [PaymentController::class, 'index']);

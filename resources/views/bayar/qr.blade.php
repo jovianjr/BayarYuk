@@ -6,6 +6,7 @@
     <div class='bg-grad-pink h-screen font-bolxtd w-full te-3xl px-6 flex flex-col items-center justify-center text-sm'>
         <form action="{{ url('/bayar/konfirmasi') }}" method="post" class="flex flex-col w-72" id="inputForm">
             @csrf
+            <input type="text" name="type" value="qr" class="hidden">
             <input type="text" id="payment_code" name="payment_code" placeholder="" class="hidden">
             <small class="w-full help-block text-danger text-center py-2 text-red-500">{{ $errors->has('payment_code') ? $errors->first('payment_code') : '' }}</small>
         </form>
