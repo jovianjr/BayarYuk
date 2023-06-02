@@ -46,10 +46,14 @@ Route::prefix('transfer')->middleware(['auth'])->group(function () {
     Route::get('/manual', [TransferController::class, 'manual']);
     Route::get('/qr', [TransferController::class, 'qr']);
 
+    Route::get('/nominal', [TransferController::class, 'nominal']);
     Route::post('/nominal', [TransferController::class, 'nominal']);
+
     Route::post('/konfirmasi', [TransferController::class, 'konfirmasi']);
+
     Route::get('/pin', [TransferController::class, 'pin']);
     Route::post('/pin', [TransferController::class, 'pin']);
+
     Route::post('/store', [TransferController::class, 'store']);
     Route::get('/berhasil', [TransferController::class, 'berhasil']);
 });
@@ -62,10 +66,13 @@ Route::prefix('bayar')->group(function () {
     Route::get('/', [PaymentController::class, 'index']);
     Route::get('/manual', [PaymentController::class, 'manual']);
     Route::get('/qr', [PaymentController::class, 'qr']);
+
     Route::get('/konfirmasi', [PaymentController::class, 'konfirmasi']);
     Route::post('/konfirmasi', [PaymentController::class, 'konfirmasi']);
+
     Route::get('/pin', [PaymentController::class, 'pin']);
     Route::post('/pin', [PaymentController::class, 'pin']);
+
     Route::post('/store', [PaymentController::class, 'store']);
     Route::get('/berhasil', [PaymentController::class, 'berhasil']);
 });

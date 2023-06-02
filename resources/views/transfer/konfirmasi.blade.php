@@ -11,7 +11,7 @@
                 <p class="text-xs">{{ $customer->phone_number }}</p>
             </div>
         </div>
-        <p class="text-green-800 text-4xl font-semibold mb-16">Rp 100.000</p>
+        <p class="text-green-800 text-4xl font-semibold mb-16">Rp {{ number_format($nominal, 0, '', '.')}}</p>
         <form action="{{ url('/transfer/pin') }}" method="post" class="flex flex-col w-72">
             @csrf
             <input type="hidden" name="phone_number" value="{{ $customer->phone_number }}" />

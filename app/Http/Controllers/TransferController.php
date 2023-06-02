@@ -30,32 +30,50 @@ class TransferController extends Controller
 
     public function nominal(Request $request)
     {
-        Validator::make($request->all(), [
-            'phone_number' => [
-                'required',
-                function (string $attribute, string $value, Closure $fail) {
-                    $customer = Customer::where(['phone_number' => $value])->first();
-                    if (!$customer) {
-                        $fail("Tujuan tidak ditemukan");
-                    }
-                },
-            ],
-        ], [
-            'required' => 'Harus di isi',
-        ])->validate();
+        if ($request->method() != 'POST' && !old('phone_number'))
+            return redirect()->to('/transfer');
 
-        $customer = Customer::select(['name', 'phone_number', 'photo'])->where(['phone_number' => $request->phone_number])->first();
+        if ($request->method() == 'POST')
+            Validator::make($request->all(), [
+                'phone_number' => [
+                    'required',
+                    function (string $attribute, string $value, Closure $fail) {
+                        $customer = Customer::where(['phone_number' => $value])->first();
+                        if (!$customer) {
+                            $fail("Tujuan tidak ditemukan");
+                        }
+                    },
+                ],
+            ], [
+                'required' => 'Harus di isi',
+            ])->validate();
+
+        $customer = Customer::select(['name', 'phone_number', 'photo'])->where(['phone_number' => $request->phone_number ?? old('phone_number')])->first();
 
         return view('transfer.nominal', ['customer' => $customer]);
     }
 
     public function konfirmasi(Request $request)
     {
-        Validator::make($request->all(), [
-            'nominal' => 'required',
+        $validator = Validator::make($request->all(), [
+            'nominal' => [
+                'required',
+                function (string $attribute, string $value, Closure $fail) {
+                    $user = Auth::user();
+                    if ($user->balance < $value) {
+                        $fail("Saldo tidak cukup");
+                    }
+                },
+            ]
         ], [
             'required' => 'Harus di isi',
-        ])->validate();
+        ]);
+
+        if ($validator->fails()) {
+            return redirect()->back()->withInput([
+                'phone_number' => $request->phone_number,
+            ])->withErrors(['nominal' => 'Saldo tidak cukup']);
+        }
 
         $customer = Customer::select(['name', 'phone_number', 'photo'])->where(['phone_number' => $request->phone_number])->first();
         $nominal = $request->nominal;
@@ -65,6 +83,8 @@ class TransferController extends Controller
 
     public function pin(Request $request)
     {
+        if ($request->method() != 'POST' && !old('phone_number') && !old('nominal') && !old('description'))
+            return redirect()->to('/transfer');
 
         $customer = Customer::select(['name', 'phone_number', 'photo'])->where(['phone_number' => $request->phone_number])->first();
         $nominal = $request->nominal;
