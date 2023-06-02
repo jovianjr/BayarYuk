@@ -10,6 +10,7 @@
         </a>
         <form action="{{ url('/transfer/nominal') }}" method="post" class="flex flex-col w-72">
             @csrf
+            <input type="text" name="type" value="manual" class="hidden">
             <input type="text" id="phone_number" name="phone_number" placeholder="Masukkan Nomor HP Penerima" class="p-3 rounded-xl placeholder:text-gray-400 text-c-earlier-black border border-c-pink">
             <small class="w-full help-block text-danger text-center py-2 text-red-500">{{ $errors->has('phone_number') ? $errors->first('phone_number') : '' }}</small>
 
