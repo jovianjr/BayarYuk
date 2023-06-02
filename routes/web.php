@@ -20,7 +20,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [HomeController::class, 'index'])->middleware(['auth']);
+Route::get('/', [HomeController::class, 'index']);
 
 Route::get('/profile', [ProfileController::class, 'index'])->middleware(['auth'])->name('profile');
 
