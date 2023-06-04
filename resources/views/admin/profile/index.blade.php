@@ -7,9 +7,9 @@
         <div class="flex flex-col items-center z-10">
             <div class="relative rounded-full h-24 w-24">
                 <img src="https://picsum.photos/200" alt="photo" class="rounded-full h-24 w-24">
-                <a href="" class="absolute -bottom-1 right-2 bg-white text-c-pink rounded p-1">
+                <!-- <a href="" class="absolute -bottom-1 right-2 bg-white text-c-pink rounded p-1">
                     <img src="/images/icon/edit.svg" alt="edit icon" class="h-3 w-3">
-                </a>
+                </a> -->
             </div>
             <h2 class="text-3xl text-white font-semibold text-center mt-4">{{ $customer->name }}</h2>
         </div>
@@ -48,7 +48,10 @@
             </div>
         </div>
 
-        <button class="bg-c-pink w-1/2 font-semibold text-white px-6 py-2 rounded-xl mt-12"> <a href="/logout" class="text-lg"> LOG OUT </a> </button>
+        <div class="flex flex-col w-full items-center gap-2 mt-12">
+            <a href="{{ url('/profile/pengaturan') }}" class="bg-white border border-c-pink w-1/2 font-semibold text-c-pink px-6 py-2 rounded-xl text-lg text-center"> Pengaturan </a>
+            <a href="{{ url('/logout') }} " class="bg-c-pink w-1/2 font-semibold text-white px-6 py-2 rounded-xl text-lg text-center">LOG OUT</a>
+        </div>
 
         <div class="flex flex-col items-center">
             <p class="text-sm mt-4">Temukan kami di</p>

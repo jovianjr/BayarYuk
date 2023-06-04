@@ -24,7 +24,11 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [HomeController::class, 'index']);
 
-Route::get('/profile', [ProfileController::class, 'index'])->middleware(['auth'])->name('profile');
+Route::prefix('profile')->middleware(['auth'])->group(function () {
+    Route::get('/', [ProfileController::class, 'index']);
+    Route::get('/pengaturan', [ProfileController::class, 'pengaturan']);
+    Route::post('/pengaturan/store', [ProfileController::class, 'store']);
+});
 
 Route::prefix('qr')->middleware(['auth'])->group(function () {
     Route::get('/', [QrController::class, 'index']);
