@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Http;
 
 class PaymentController extends Controller
 {
@@ -119,7 +120,16 @@ class PaymentController extends Controller
         $user->balance -= $payment->amount;
         $userSaved = $user->save();
 
+
         if ($paymentSaved && $userSaved) {
+            $callbackUrl = $user->callback_url_success;
+            $data = [
+                'status' => 'success',
+                'referral_id' => $payment->referral_id,
+            ];
+
+            Http::post($callbackUrl, $data);
+
             DB::commit();
             return redirect('bayar/berhasil');
         } else {
