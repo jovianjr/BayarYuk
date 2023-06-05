@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Customer;
 use App\Models\Payment;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Closure;
@@ -120,7 +121,7 @@ class PaymentController extends Controller
         $user->balance -= $payment->amount;
         $userSaved = $user->save();
 
-        $userDest = Auth::where(['id' => $payment->to_account_id])->first();
+        $userDest = User::where(['id' => $payment->to_account_id])->first();
 
         if ($paymentSaved && $userSaved) {
             $callbackUrl = $userDest->callback_url_success;
