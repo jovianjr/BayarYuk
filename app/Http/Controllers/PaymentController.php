@@ -120,19 +120,26 @@ class PaymentController extends Controller
         $user->balance -= $payment->amount;
         $userSaved = $user->save();
 
+        $userDest = Auth::where(['id' => $payment->to_account_id])->first();
 
         if ($paymentSaved && $userSaved) {
-            $callbackUrl = $user->callback_url_success;
+            $callbackUrl = $userDest->callback_url_success;
             $data = [
                 'status' => 'success',
                 'referral_id' => $payment->referral_id,
             ];
 
             Http::post($callbackUrl, $data);
-
             DB::commit();
             return redirect('bayar/berhasil');
         } else {
+            $callbackUrl = $userDest->callback_url_failed;
+            $data = [
+                'status' => 'failed',
+                'referral_id' => $payment->referral_id,
+            ];
+
+            Http::post($callbackUrl, $data);
             DB::rollBack();
             return redirect()->back()->with('error', 'Sedang terjadi kesalahan');
         }
