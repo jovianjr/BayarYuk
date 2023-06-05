@@ -78,13 +78,14 @@
                 <x-input id="password_confirmation" class="block mt-1 w-full" type="password" name="password_confirmation" required />
             </div>
 
-            <div class="flex items-center justify-center mt-4">
-                <!-- <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('login') }}">
-                    {{ __('Already registered?') }}
-                </a> -->
+            <div class="flex items-center justify-between mt-4">
+                <a class="text-sm text-c-earlier-black hover:text-gray-900 w-1/2" href="{{ route('login') }}">
+                    {{ __('Sudah punya akun?') }}
+                    <span class="underline ">Masuk disini</span>
+                </a>
 
                 <x-button>
-                    {{ __('Register') }}
+                    {{ __('Daftar') }}
                 </x-button>
             </div>
         </form>
