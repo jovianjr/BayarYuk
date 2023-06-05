@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Customer;
 use App\Models\Transaction;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Closure;
@@ -134,7 +135,14 @@ class TransferController extends Controller
         $transaction->description = $description;
         $transactionSaved = $transaction->save();
 
-        if ($transactionSaved) {
+        $userDest = User::where(['id' => $customer->user_id])->first();
+        $userDest->balance += $nominal;
+        $userDestSaved = $userDest->save();
+
+        $user->balance -= $nominal;
+        $userSaved = $user->save();
+
+        if ($transactionSaved && $userDestSaved && $userSaved) {
             DB::commit();
             return redirect('transfer/berhasil');
         } else {
