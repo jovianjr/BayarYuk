@@ -41,6 +41,7 @@ class PaymentController extends Controller
         // add id
         $payment->to_account_id = $user->id;
         $payment->amount = $request->nominal;
+        $payment->referral_id = $request->referral_id;
         $payment->payment_code = Str::random(8);
         $paymentSaved = $payment->save();
 
